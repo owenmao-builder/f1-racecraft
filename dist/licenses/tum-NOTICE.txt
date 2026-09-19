@@ -1,0 +1,31 @@
+TUM basic race strategy model — APEX browser adaptation
+
+Upstream author: Alexander Heilmeier, TUMFTM.
+Repository: https://github.com/TUMFTM/race-simulation
+Revision: 96ef2c2021982217be008fe458df47c1a72da071
+Licence: GNU LGPL v3 (tum-LICENSE.txt), incorporating GPL v3 (GPL-3.0.txt).
+Original calculation sources: tum-upstream/ (included alongside this notice).
+Modified, unminified JavaScript source: ../tum-strategy-engine.js
+Modified on 2026-09-19 for this APEX demo.
+
+Changes: extracted deterministic green-flag, linear tyre model; translated to
+JavaScript; summed linear stint costs analytically; removed identical base lap,
+fuel and initial-stint terms from all compared plans; exposed relative costs
+from a historical lap-start snapshot. Additional UI searches candidate pit laps
+and dry compounds, and optionally requires two compounds within known stints.
+No upstream VSE, reinforcement learning, traffic, SC/VSC or refuelling code runs.
+The library remains a separately imported, readable and replaceable ES module.
+Users may modify and replace it; no minifier, integrity pin or obfuscation used.
+
+Defaults 0/0.09, 0.5/0.05, 1.2/0.02 are illustrative mappings of upstream
+YasMarina 2017 A5/A4/A3 parameters to soft/medium/hard teaching roles, not fitted
+to these modern races. Model-relative differences are checked against upstream
+Python results in scripts/validate-tum.mjs and the generated parity fixture.
+
+APEX nonlinear extension (2026-09-19): ../race-strategy-engine.js, also LGPL-3.0-only.
+Retains the deterministic stint-sum and exhaustive-search architecture; adds
+quadratic and post-knee squared degradation, per-compound assumed inventory,
+per-stop assumed traffic loss and a current-lap-only neutralisation pit window.
+This does not execute upstream traffic or SC/VSC simulation. New coefficients
+are APEX illustrative engineering scenarios, not Pirelli data or a 2026 fit.
+The original linear module and its original Python parity fixtures are unchanged.

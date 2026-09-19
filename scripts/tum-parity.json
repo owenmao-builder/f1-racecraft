@@ -1,0 +1,3212 @@
+[
+  {
+    "context": {
+      "remaining": 12,
+      "compound": "SOFT",
+      "age": 9,
+      "used": [
+        "SOFT"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 0.61,
+          "rate": 0.271
+        },
+        "MEDIUM": {
+          "offset": 0.99,
+          "rate": 0.219
+        },
+        "HARD": {
+          "offset": 0.2,
+          "rate": 0.158
+        }
+      },
+      "pitLoss": 34.5,
+      "warmup": 1.6,
+      "twoCompounds": false
+    },
+    "stops": [],
+    "expectedDelta": 0.0
+  },
+  {
+    "context": {
+      "remaining": 63,
+      "compound": "MEDIUM",
+      "age": 38,
+      "used": [
+        "MEDIUM"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 0.0,
+          "rate": 0.229
+        },
+        "MEDIUM": {
+          "offset": 0.25,
+          "rate": 0.013
+        },
+        "HARD": {
+          "offset": 1.46,
+          "rate": 0.254
+        }
+      },
+      "pitLoss": 34.3,
+      "warmup": 2.9,
+      "twoCompounds": false
+    },
+    "stops": [
+      {
+        "after": 13,
+        "compound": "MEDIUM"
+      }
+    ],
+    "expectedDelta": 4.049999999999272
+  },
+  {
+    "context": {
+      "remaining": 13,
+      "compound": "MEDIUM",
+      "age": 7,
+      "used": [
+        "MEDIUM"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 0.07,
+          "rate": 0.162
+        },
+        "MEDIUM": {
+          "offset": 1.46,
+          "rate": 0.137
+        },
+        "HARD": {
+          "offset": 0.86,
+          "rate": 0.277
+        }
+      },
+      "pitLoss": 24.4,
+      "warmup": 0.7,
+      "twoCompounds": false
+    },
+    "stops": [
+      {
+        "after": 5,
+        "compound": "HARD"
+      },
+      {
+        "after": 8,
+        "compound": "MEDIUM"
+      }
+    ],
+    "expectedDelta": 33.613000000000056
+  },
+  {
+    "context": {
+      "remaining": 24,
+      "compound": "HARD",
+      "age": 19,
+      "used": [
+        "HARD"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 1.14,
+          "rate": 0.177
+        },
+        "MEDIUM": {
+          "offset": 1.54,
+          "rate": 0.18
+        },
+        "HARD": {
+          "offset": 0.46,
+          "rate": 0.106
+        }
+      },
+      "pitLoss": 13.5,
+      "warmup": 1.2,
+      "twoCompounds": false
+    },
+    "stops": [],
+    "expectedDelta": 0.0
+  },
+  {
+    "context": {
+      "remaining": 40,
+      "compound": "MEDIUM",
+      "age": 4,
+      "used": [
+        "MEDIUM"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 1.59,
+          "rate": 0.013
+        },
+        "MEDIUM": {
+          "offset": 0.36,
+          "rate": 0.057
+        },
+        "HARD": {
+          "offset": 1.98,
+          "rate": 0.26
+        }
+      },
+      "pitLoss": 9.6,
+      "warmup": 0.8,
+      "twoCompounds": false
+    },
+    "stops": [
+      {
+        "after": 36,
+        "compound": "MEDIUM"
+      }
+    ],
+    "expectedDelta": 1.2799999999997453
+  },
+  {
+    "context": {
+      "remaining": 21,
+      "compound": "MEDIUM",
+      "age": 3,
+      "used": [
+        "MEDIUM"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 0.39,
+          "rate": 0.021
+        },
+        "MEDIUM": {
+          "offset": 0.01,
+          "rate": 0.286
+        },
+        "HARD": {
+          "offset": 1.38,
+          "rate": 0.286
+        }
+      },
+      "pitLoss": 22.2,
+      "warmup": 2.9,
+      "twoCompounds": false
+    },
+    "stops": [
+      {
+        "after": 8,
+        "compound": "HARD"
+      },
+      {
+        "after": 11,
+        "compound": "HARD"
+      }
+    ],
+    "expectedDelta": 18.531999999999925
+  },
+  {
+    "context": {
+      "remaining": 68,
+      "compound": "SOFT",
+      "age": 14,
+      "used": [
+        "SOFT"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 0.77,
+          "rate": 0.178
+        },
+        "MEDIUM": {
+          "offset": 0.74,
+          "rate": 0.25
+        },
+        "HARD": {
+          "offset": 1.92,
+          "rate": 0.047
+        }
+      },
+      "pitLoss": 29.0,
+      "warmup": 1.1,
+      "twoCompounds": false
+    },
+    "stops": [],
+    "expectedDelta": 0.0
+  },
+  {
+    "context": {
+      "remaining": 50,
+      "compound": "SOFT",
+      "age": 39,
+      "used": [
+        "SOFT"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 0.5,
+          "rate": 0.01
+        },
+        "MEDIUM": {
+          "offset": 0.05,
+          "rate": 0.286
+        },
+        "HARD": {
+          "offset": 1.19,
+          "rate": 0.291
+        }
+      },
+      "pitLoss": 32.3,
+      "warmup": 0.9,
+      "twoCompounds": false
+    },
+    "stops": [
+      {
+        "after": 27,
+        "compound": "SOFT"
+      }
+    ],
+    "expectedDelta": 18.020000000000437
+  },
+  {
+    "context": {
+      "remaining": 61,
+      "compound": "MEDIUM",
+      "age": 5,
+      "used": [
+        "MEDIUM"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 1.96,
+          "rate": 0.136
+        },
+        "MEDIUM": {
+          "offset": 1.88,
+          "rate": 0.098
+        },
+        "HARD": {
+          "offset": 1.83,
+          "rate": 0.156
+        }
+      },
+      "pitLoss": 32.3,
+      "warmup": 0.4,
+      "twoCompounds": false
+    },
+    "stops": [
+      {
+        "after": 38,
+        "compound": "MEDIUM"
+      },
+      {
+        "after": 45,
+        "compound": "MEDIUM"
+      }
+    ],
+    "expectedDelta": -42.4980000000005
+  },
+  {
+    "context": {
+      "remaining": 49,
+      "compound": "MEDIUM",
+      "age": 5,
+      "used": [
+        "MEDIUM"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 1.64,
+          "rate": 0.02
+        },
+        "MEDIUM": {
+          "offset": 1.93,
+          "rate": 0.063
+        },
+        "HARD": {
+          "offset": 0.01,
+          "rate": 0.266
+        }
+      },
+      "pitLoss": 30.2,
+      "warmup": 2.0,
+      "twoCompounds": false
+    },
+    "stops": [],
+    "expectedDelta": 0.0
+  },
+  {
+    "context": {
+      "remaining": 44,
+      "compound": "MEDIUM",
+      "age": 14,
+      "used": [
+        "MEDIUM"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 0.23,
+          "rate": 0.102
+        },
+        "MEDIUM": {
+          "offset": 1.91,
+          "rate": 0.295
+        },
+        "HARD": {
+          "offset": 0.46,
+          "rate": 0.138
+        }
+      },
+      "pitLoss": 20.8,
+      "warmup": 2.7,
+      "twoCompounds": false
+    },
+    "stops": [
+      {
+        "after": 1,
+        "compound": "MEDIUM"
+      }
+    ],
+    "expectedDelta": -166.77500000000055
+  },
+  {
+    "context": {
+      "remaining": 35,
+      "compound": "SOFT",
+      "age": 35,
+      "used": [
+        "SOFT"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 0.14,
+          "rate": 0.111
+        },
+        "MEDIUM": {
+          "offset": 1.45,
+          "rate": 0.045
+        },
+        "HARD": {
+          "offset": 0.44,
+          "rate": 0.207
+        }
+      },
+      "pitLoss": 16.8,
+      "warmup": 1.9,
+      "twoCompounds": false
+    },
+    "stops": [
+      {
+        "after": 12,
+        "compound": "SOFT"
+      },
+      {
+        "after": 20,
+        "compound": "HARD"
+      }
+    ],
+    "expectedDelta": -81.33100000000195
+  },
+  {
+    "context": {
+      "remaining": 11,
+      "compound": "SOFT",
+      "age": 11,
+      "used": [
+        "SOFT"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 1.91,
+          "rate": 0.016
+        },
+        "MEDIUM": {
+          "offset": 0.03,
+          "rate": 0.293
+        },
+        "HARD": {
+          "offset": 0.73,
+          "rate": 0.197
+        }
+      },
+      "pitLoss": 17.2,
+      "warmup": 1.8,
+      "twoCompounds": false
+    },
+    "stops": [],
+    "expectedDelta": 0.0
+  },
+  {
+    "context": {
+      "remaining": 4,
+      "compound": "HARD",
+      "age": 23,
+      "used": [
+        "HARD"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 0.02,
+          "rate": 0.173
+        },
+        "MEDIUM": {
+          "offset": 0.05,
+          "rate": 0.283
+        },
+        "HARD": {
+          "offset": 0.22,
+          "rate": 0.208
+        }
+      },
+      "pitLoss": 27.4,
+      "warmup": 0.7,
+      "twoCompounds": false
+    },
+    "stops": [
+      {
+        "after": 3,
+        "compound": "MEDIUM"
+      }
+    ],
+    "expectedDelta": 22.521999999999935
+  },
+  {
+    "context": {
+      "remaining": 9,
+      "compound": "HARD",
+      "age": 33,
+      "used": [
+        "HARD"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 1.77,
+          "rate": 0.14
+        },
+        "MEDIUM": {
+          "offset": 1.41,
+          "rate": 0.262
+        },
+        "HARD": {
+          "offset": 0.61,
+          "rate": 0.201
+        }
+      },
+      "pitLoss": 31.5,
+      "warmup": 2.5,
+      "twoCompounds": false
+    },
+    "stops": [
+      {
+        "after": 1,
+        "compound": "MEDIUM"
+      },
+      {
+        "after": 3,
+        "compound": "HARD"
+      }
+    ],
+    "expectedDelta": 12.576999999999998
+  },
+  {
+    "context": {
+      "remaining": 37,
+      "compound": "HARD",
+      "age": 9,
+      "used": [
+        "HARD"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 1.68,
+          "rate": 0.072
+        },
+        "MEDIUM": {
+          "offset": 0.6,
+          "rate": 0.283
+        },
+        "HARD": {
+          "offset": 0.05,
+          "rate": 0.117
+        }
+      },
+      "pitLoss": 32.3,
+      "warmup": 0.4,
+      "twoCompounds": false
+    },
+    "stops": [],
+    "expectedDelta": 0.0
+  },
+  {
+    "context": {
+      "remaining": 41,
+      "compound": "MEDIUM",
+      "age": 15,
+      "used": [
+        "MEDIUM"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 0.0,
+          "rate": 0.14
+        },
+        "MEDIUM": {
+          "offset": 0.3,
+          "rate": 0.238
+        },
+        "HARD": {
+          "offset": 0.84,
+          "rate": 0.035
+        }
+      },
+      "pitLoss": 38.3,
+      "warmup": 2.4,
+      "twoCompounds": false
+    },
+    "stops": [
+      {
+        "after": 39,
+        "compound": "HARD"
+      }
+    ],
+    "expectedDelta": 15.872999999999593
+  },
+  {
+    "context": {
+      "remaining": 75,
+      "compound": "SOFT",
+      "age": 18,
+      "used": [
+        "SOFT"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 1.97,
+          "rate": 0.098
+        },
+        "MEDIUM": {
+          "offset": 1.05,
+          "rate": 0.152
+        },
+        "HARD": {
+          "offset": 0.94,
+          "rate": 0.015
+        }
+      },
+      "pitLoss": 36.3,
+      "warmup": 1.5,
+      "twoCompounds": false
+    },
+    "stops": [
+      {
+        "after": 33,
+        "compound": "HARD"
+      },
+      {
+        "after": 51,
+        "compound": "HARD"
+      }
+    ],
+    "expectedDelta": -255.5189999999975
+  },
+  {
+    "context": {
+      "remaining": 21,
+      "compound": "MEDIUM",
+      "age": 22,
+      "used": [
+        "MEDIUM"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 1.05,
+          "rate": 0.268
+        },
+        "MEDIUM": {
+          "offset": 0.76,
+          "rate": 0.067
+        },
+        "HARD": {
+          "offset": 1.37,
+          "rate": 0.037
+        }
+      },
+      "pitLoss": 39.3,
+      "warmup": 0.1,
+      "twoCompounds": false
+    },
+    "stops": [],
+    "expectedDelta": 0.0
+  },
+  {
+    "context": {
+      "remaining": 49,
+      "compound": "HARD",
+      "age": 37,
+      "used": [
+        "HARD"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 0.03,
+          "rate": 0.169
+        },
+        "MEDIUM": {
+          "offset": 0.55,
+          "rate": 0.031
+        },
+        "HARD": {
+          "offset": 1.22,
+          "rate": 0.254
+        }
+      },
+      "pitLoss": 14.9,
+      "warmup": 2.0,
+      "twoCompounds": false
+    },
+    "stops": [
+      {
+        "after": 41,
+        "compound": "SOFT"
+      }
+    ],
+    "expectedDelta": -153.49599999999919
+  },
+  {
+    "context": {
+      "remaining": 53,
+      "compound": "MEDIUM",
+      "age": 3,
+      "used": [
+        "MEDIUM"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 0.16,
+          "rate": 0.189
+        },
+        "MEDIUM": {
+          "offset": 0.7,
+          "rate": 0.131
+        },
+        "HARD": {
+          "offset": 1.35,
+          "rate": 0.06
+        }
+      },
+      "pitLoss": 26.9,
+      "warmup": 2.8,
+      "twoCompounds": false
+    },
+    "stops": [
+      {
+        "after": 5,
+        "compound": "HARD"
+      },
+      {
+        "after": 35,
+        "compound": "SOFT"
+      }
+    ],
+    "expectedDelta": -73.875
+  },
+  {
+    "context": {
+      "remaining": 54,
+      "compound": "SOFT",
+      "age": 10,
+      "used": [
+        "SOFT"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 1.67,
+          "rate": 0.172
+        },
+        "MEDIUM": {
+          "offset": 1.41,
+          "rate": 0.061
+        },
+        "HARD": {
+          "offset": 0.82,
+          "rate": 0.169
+        }
+      },
+      "pitLoss": 18.5,
+      "warmup": 0.5,
+      "twoCompounds": false
+    },
+    "stops": [],
+    "expectedDelta": 0.0
+  },
+  {
+    "context": {
+      "remaining": 39,
+      "compound": "HARD",
+      "age": 9,
+      "used": [
+        "HARD"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 0.88,
+          "rate": 0.172
+        },
+        "MEDIUM": {
+          "offset": 1.88,
+          "rate": 0.044
+        },
+        "HARD": {
+          "offset": 1.67,
+          "rate": 0.222
+        }
+      },
+      "pitLoss": 14.4,
+      "warmup": 0.4,
+      "twoCompounds": false
+    },
+    "stops": [
+      {
+        "after": 10,
+        "compound": "MEDIUM"
+      }
+    ],
+    "expectedDelta": -173.70000000000073
+  },
+  {
+    "context": {
+      "remaining": 65,
+      "compound": "SOFT",
+      "age": 35,
+      "used": [
+        "SOFT"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 0.86,
+          "rate": 0.037
+        },
+        "MEDIUM": {
+          "offset": 1.99,
+          "rate": 0.217
+        },
+        "HARD": {
+          "offset": 0.44,
+          "rate": 0.145
+        }
+      },
+      "pitLoss": 28.5,
+      "warmup": 1.4,
+      "twoCompounds": false
+    },
+    "stops": [
+      {
+        "after": 26,
+        "compound": "MEDIUM"
+      },
+      {
+        "after": 37,
+        "compound": "SOFT"
+      }
+    ],
+    "expectedDelta": -17.28900000000158
+  },
+  {
+    "context": {
+      "remaining": 46,
+      "compound": "SOFT",
+      "age": 16,
+      "used": [
+        "SOFT"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 1.47,
+          "rate": 0.078
+        },
+        "MEDIUM": {
+          "offset": 1.12,
+          "rate": 0.034
+        },
+        "HARD": {
+          "offset": 1.04,
+          "rate": 0.212
+        }
+      },
+      "pitLoss": 20.7,
+      "warmup": 0.6,
+      "twoCompounds": false
+    },
+    "stops": [],
+    "expectedDelta": 0.0
+  },
+  {
+    "context": {
+      "remaining": 6,
+      "compound": "MEDIUM",
+      "age": 22,
+      "used": [
+        "MEDIUM"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 0.82,
+          "rate": 0.039
+        },
+        "MEDIUM": {
+          "offset": 0.85,
+          "rate": 0.157
+        },
+        "HARD": {
+          "offset": 0.13,
+          "rate": 0.203
+        }
+      },
+      "pitLoss": 38.5,
+      "warmup": 2.1,
+      "twoCompounds": false
+    },
+    "stops": [
+      {
+        "after": 4,
+        "compound": "MEDIUM"
+      }
+    ],
+    "expectedDelta": 32.436000000000035
+  },
+  {
+    "context": {
+      "remaining": 8,
+      "compound": "SOFT",
+      "age": 19,
+      "used": [
+        "SOFT"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 1.89,
+          "rate": 0.231
+        },
+        "MEDIUM": {
+          "offset": 0.65,
+          "rate": 0.049
+        },
+        "HARD": {
+          "offset": 0.97,
+          "rate": 0.214
+        }
+      },
+      "pitLoss": 14.4,
+      "warmup": 1.1,
+      "twoCompounds": false
+    },
+    "stops": [
+      {
+        "after": 1,
+        "compound": "SOFT"
+      },
+      {
+        "after": 3,
+        "compound": "HARD"
+      }
+    ],
+    "expectedDelta": -8.420000000000073
+  },
+  {
+    "context": {
+      "remaining": 36,
+      "compound": "HARD",
+      "age": 3,
+      "used": [
+        "HARD"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 1.0,
+          "rate": 0.037
+        },
+        "MEDIUM": {
+          "offset": 0.42,
+          "rate": 0.283
+        },
+        "HARD": {
+          "offset": 1.25,
+          "rate": 0.098
+        }
+      },
+      "pitLoss": 20.6,
+      "warmup": 0.2,
+      "twoCompounds": false
+    },
+    "stops": [],
+    "expectedDelta": 0.0
+  },
+  {
+    "context": {
+      "remaining": 11,
+      "compound": "HARD",
+      "age": 3,
+      "used": [
+        "HARD"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 0.38,
+          "rate": 0.149
+        },
+        "MEDIUM": {
+          "offset": 0.14,
+          "rate": 0.296
+        },
+        "HARD": {
+          "offset": 1.21,
+          "rate": 0.122
+        }
+      },
+      "pitLoss": 35.9,
+      "warmup": 1.5,
+      "twoCompounds": false
+    },
+    "stops": [
+      {
+        "after": 8,
+        "compound": "MEDIUM"
+      }
+    ],
+    "expectedDelta": 30.685999999999922
+  },
+  {
+    "context": {
+      "remaining": 29,
+      "compound": "HARD",
+      "age": 0,
+      "used": [
+        "HARD"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 1.98,
+          "rate": 0.243
+        },
+        "MEDIUM": {
+          "offset": 0.91,
+          "rate": 0.099
+        },
+        "HARD": {
+          "offset": 0.03,
+          "rate": 0.097
+        }
+      },
+      "pitLoss": 12.2,
+      "warmup": 2.3,
+      "twoCompounds": false
+    },
+    "stops": [
+      {
+        "after": 14,
+        "compound": "MEDIUM"
+      },
+      {
+        "after": 22,
+        "compound": "SOFT"
+      }
+    ],
+    "expectedDelta": 27.00999999999931
+  },
+  {
+    "context": {
+      "remaining": 71,
+      "compound": "HARD",
+      "age": 19,
+      "used": [
+        "HARD"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 1.32,
+          "rate": 0.188
+        },
+        "MEDIUM": {
+          "offset": 0.08,
+          "rate": 0.053
+        },
+        "HARD": {
+          "offset": 1.04,
+          "rate": 0.185
+        }
+      },
+      "pitLoss": 38.7,
+      "warmup": 2.4,
+      "twoCompounds": false
+    },
+    "stops": [],
+    "expectedDelta": 0.0
+  },
+  {
+    "context": {
+      "remaining": 30,
+      "compound": "HARD",
+      "age": 9,
+      "used": [
+        "HARD"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 0.62,
+          "rate": 0.181
+        },
+        "MEDIUM": {
+          "offset": 1.62,
+          "rate": 0.177
+        },
+        "HARD": {
+          "offset": 0.14,
+          "rate": 0.076
+        }
+      },
+      "pitLoss": 11.4,
+      "warmup": 0.4,
+      "twoCompounds": false
+    },
+    "stops": [
+      {
+        "after": 15,
+        "compound": "HARD"
+      }
+    ],
+    "expectedDelta": -15.560000000000855
+  },
+  {
+    "context": {
+      "remaining": 41,
+      "compound": "HARD",
+      "age": 0,
+      "used": [
+        "HARD"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 0.74,
+          "rate": 0.189
+        },
+        "MEDIUM": {
+          "offset": 1.78,
+          "rate": 0.053
+        },
+        "HARD": {
+          "offset": 0.48,
+          "rate": 0.108
+        }
+      },
+      "pitLoss": 21.2,
+      "warmup": 1.3,
+      "twoCompounds": false
+    },
+    "stops": [
+      {
+        "after": 19,
+        "compound": "HARD"
+      },
+      {
+        "after": 39,
+        "compound": "MEDIUM"
+      }
+    ],
+    "expectedDelta": -1.9189999999994143
+  },
+  {
+    "context": {
+      "remaining": 73,
+      "compound": "SOFT",
+      "age": 35,
+      "used": [
+        "SOFT"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 0.67,
+          "rate": 0.018
+        },
+        "MEDIUM": {
+          "offset": 0.91,
+          "rate": 0.136
+        },
+        "HARD": {
+          "offset": 1.78,
+          "rate": 0.236
+        }
+      },
+      "pitLoss": 31.6,
+      "warmup": 0.1,
+      "twoCompounds": false
+    },
+    "stops": [],
+    "expectedDelta": 0.0
+  },
+  {
+    "context": {
+      "remaining": 53,
+      "compound": "SOFT",
+      "age": 29,
+      "used": [
+        "SOFT"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 0.24,
+          "rate": 0.105
+        },
+        "MEDIUM": {
+          "offset": 0.59,
+          "rate": 0.204
+        },
+        "HARD": {
+          "offset": 0.02,
+          "rate": 0.288
+        }
+      },
+      "pitLoss": 5.3,
+      "warmup": 3.0,
+      "twoCompounds": false
+    },
+    "stops": [
+      {
+        "after": 31,
+        "compound": "HARD"
+      }
+    ],
+    "expectedDelta": -92.86699999999837
+  },
+  {
+    "context": {
+      "remaining": 66,
+      "compound": "HARD",
+      "age": 32,
+      "used": [
+        "HARD"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 0.76,
+          "rate": 0.061
+        },
+        "MEDIUM": {
+          "offset": 1.22,
+          "rate": 0.081
+        },
+        "HARD": {
+          "offset": 0.55,
+          "rate": 0.233
+        }
+      },
+      "pitLoss": 22.8,
+      "warmup": 0.5,
+      "twoCompounds": false
+    },
+    "stops": [
+      {
+        "after": 28,
+        "compound": "HARD"
+      },
+      {
+        "after": 57,
+        "compound": "SOFT"
+      }
+    ],
+    "expectedDelta": -549.7550000000019
+  },
+  {
+    "context": {
+      "remaining": 29,
+      "compound": "MEDIUM",
+      "age": 19,
+      "used": [
+        "MEDIUM"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 1.76,
+          "rate": 0.266
+        },
+        "MEDIUM": {
+          "offset": 1.83,
+          "rate": 0.052
+        },
+        "HARD": {
+          "offset": 0.5,
+          "rate": 0.06
+        }
+      },
+      "pitLoss": 33.6,
+      "warmup": 2.1,
+      "twoCompounds": false
+    },
+    "stops": [],
+    "expectedDelta": 0.0
+  },
+  {
+    "context": {
+      "remaining": 74,
+      "compound": "SOFT",
+      "age": 26,
+      "used": [
+        "SOFT"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 1.14,
+          "rate": 0.065
+        },
+        "MEDIUM": {
+          "offset": 0.78,
+          "rate": 0.068
+        },
+        "HARD": {
+          "offset": 0.12,
+          "rate": 0.116
+        }
+      },
+      "pitLoss": 23.4,
+      "warmup": 2.9,
+      "twoCompounds": false
+    },
+    "stops": [
+      {
+        "after": 72,
+        "compound": "MEDIUM"
+      }
+    ],
+    "expectedDelta": 12.842999999999847
+  },
+  {
+    "context": {
+      "remaining": 65,
+      "compound": "HARD",
+      "age": 18,
+      "used": [
+        "HARD"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 0.55,
+          "rate": 0.094
+        },
+        "MEDIUM": {
+          "offset": 1.03,
+          "rate": 0.224
+        },
+        "HARD": {
+          "offset": 0.03,
+          "rate": 0.271
+        }
+      },
+      "pitLoss": 27.7,
+      "warmup": 1.5,
+      "twoCompounds": false
+    },
+    "stops": [
+      {
+        "after": 32,
+        "compound": "MEDIUM"
+      },
+      {
+        "after": 55,
+        "compound": "MEDIUM"
+      }
+    ],
+    "expectedDelta": -432.08600000000024
+  },
+  {
+    "context": {
+      "remaining": 14,
+      "compound": "HARD",
+      "age": 21,
+      "used": [
+        "HARD"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 1.12,
+          "rate": 0.143
+        },
+        "MEDIUM": {
+          "offset": 1.6,
+          "rate": 0.205
+        },
+        "HARD": {
+          "offset": 1.04,
+          "rate": 0.108
+        }
+      },
+      "pitLoss": 10.1,
+      "warmup": 1.2,
+      "twoCompounds": false
+    },
+    "stops": [],
+    "expectedDelta": 0.0
+  },
+  {
+    "context": {
+      "remaining": 50,
+      "compound": "SOFT",
+      "age": 33,
+      "used": [
+        "SOFT"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 0.56,
+          "rate": 0.255
+        },
+        "MEDIUM": {
+          "offset": 0.1,
+          "rate": 0.153
+        },
+        "HARD": {
+          "offset": 0.24,
+          "rate": 0.206
+        }
+      },
+      "pitLoss": 39.6,
+      "warmup": 2.0,
+      "twoCompounds": false
+    },
+    "stops": [
+      {
+        "after": 42,
+        "compound": "HARD"
+      }
+    ],
+    "expectedDelta": -115.33199999999943
+  },
+  {
+    "context": {
+      "remaining": 21,
+      "compound": "MEDIUM",
+      "age": 16,
+      "used": [
+        "MEDIUM"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 1.08,
+          "rate": 0.075
+        },
+        "MEDIUM": {
+          "offset": 1.41,
+          "rate": 0.105
+        },
+        "HARD": {
+          "offset": 0.18,
+          "rate": 0.114
+        }
+      },
+      "pitLoss": 30.7,
+      "warmup": 1.9,
+      "twoCompounds": false
+    },
+    "stops": [
+      {
+        "after": 11,
+        "compound": "HARD"
+      },
+      {
+        "after": 14,
+        "compound": "HARD"
+      }
+    ],
+    "expectedDelta": 22.560999999999922
+  },
+  {
+    "context": {
+      "remaining": 32,
+      "compound": "SOFT",
+      "age": 12,
+      "used": [
+        "SOFT"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 1.68,
+          "rate": 0.22
+        },
+        "MEDIUM": {
+          "offset": 1.08,
+          "rate": 0.276
+        },
+        "HARD": {
+          "offset": 0.12,
+          "rate": 0.059
+        }
+      },
+      "pitLoss": 29.6,
+      "warmup": 1.4,
+      "twoCompounds": false
+    },
+    "stops": [],
+    "expectedDelta": 0.0
+  },
+  {
+    "context": {
+      "remaining": 10,
+      "compound": "HARD",
+      "age": 27,
+      "used": [
+        "HARD"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 1.86,
+          "rate": 0.283
+        },
+        "MEDIUM": {
+          "offset": 0.95,
+          "rate": 0.091
+        },
+        "HARD": {
+          "offset": 1.24,
+          "rate": 0.139
+        }
+      },
+      "pitLoss": 25.7,
+      "warmup": 2.8,
+      "twoCompounds": false
+    },
+    "stops": [
+      {
+        "after": 4,
+        "compound": "HARD"
+      }
+    ],
+    "expectedDelta": 2.646000000000072
+  },
+  {
+    "context": {
+      "remaining": 34,
+      "compound": "HARD",
+      "age": 3,
+      "used": [
+        "HARD"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 1.34,
+          "rate": 0.291
+        },
+        "MEDIUM": {
+          "offset": 1.06,
+          "rate": 0.123
+        },
+        "HARD": {
+          "offset": 1.23,
+          "rate": 0.065
+        }
+      },
+      "pitLoss": 32.6,
+      "warmup": 1.6,
+      "twoCompounds": false
+    },
+    "stops": [
+      {
+        "after": 9,
+        "compound": "HARD"
+      },
+      {
+        "after": 23,
+        "compound": "HARD"
+      }
+    ],
+    "expectedDelta": 38.88999999999987
+  },
+  {
+    "context": {
+      "remaining": 43,
+      "compound": "HARD",
+      "age": 6,
+      "used": [
+        "HARD"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 0.02,
+          "rate": 0.128
+        },
+        "MEDIUM": {
+          "offset": 0.05,
+          "rate": 0.183
+        },
+        "HARD": {
+          "offset": 0.16,
+          "rate": 0.077
+        }
+      },
+      "pitLoss": 32.3,
+      "warmup": 2.1,
+      "twoCompounds": false
+    },
+    "stops": [],
+    "expectedDelta": 0.0
+  },
+  {
+    "context": {
+      "remaining": 31,
+      "compound": "SOFT",
+      "age": 1,
+      "used": [
+        "SOFT"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 0.45,
+          "rate": 0.15
+        },
+        "MEDIUM": {
+          "offset": 1.94,
+          "rate": 0.022
+        },
+        "HARD": {
+          "offset": 1.74,
+          "rate": 0.027
+        }
+      },
+      "pitLoss": 5.4,
+      "warmup": 0.6,
+      "twoCompounds": false
+    },
+    "stops": [
+      {
+        "after": 8,
+        "compound": "MEDIUM"
+      }
+    ],
+    "expectedDelta": -23.164000000000215
+  },
+  {
+    "context": {
+      "remaining": 8,
+      "compound": "MEDIUM",
+      "age": 20,
+      "used": [
+        "MEDIUM"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 0.42,
+          "rate": 0.187
+        },
+        "MEDIUM": {
+          "offset": 1.61,
+          "rate": 0.069
+        },
+        "HARD": {
+          "offset": 0.28,
+          "rate": 0.175
+        }
+      },
+      "pitLoss": 27.4,
+      "warmup": 1.3,
+      "twoCompounds": false
+    },
+    "stops": [
+      {
+        "after": 5,
+        "compound": "SOFT"
+      },
+      {
+        "after": 7,
+        "compound": "HARD"
+      }
+    ],
+    "expectedDelta": 48.49500000000012
+  },
+  {
+    "context": {
+      "remaining": 29,
+      "compound": "SOFT",
+      "age": 15,
+      "used": [
+        "SOFT"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 0.68,
+          "rate": 0.053
+        },
+        "MEDIUM": {
+          "offset": 0.44,
+          "rate": 0.275
+        },
+        "HARD": {
+          "offset": 1.24,
+          "rate": 0.252
+        }
+      },
+      "pitLoss": 19.1,
+      "warmup": 0.6,
+      "twoCompounds": false
+    },
+    "stops": [],
+    "expectedDelta": 0.0
+  },
+  {
+    "context": {
+      "remaining": 13,
+      "compound": "HARD",
+      "age": 33,
+      "used": [
+        "HARD"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 1.72,
+          "rate": 0.222
+        },
+        "MEDIUM": {
+          "offset": 0.44,
+          "rate": 0.231
+        },
+        "HARD": {
+          "offset": 1.78,
+          "rate": 0.099
+        }
+      },
+      "pitLoss": 22.3,
+      "warmup": 3.0,
+      "twoCompounds": false
+    },
+    "stops": [
+      {
+        "after": 4,
+        "compound": "SOFT"
+      }
+    ],
+    "expectedDelta": -3.779000000000451
+  },
+  {
+    "context": {
+      "remaining": 75,
+      "compound": "SOFT",
+      "age": 27,
+      "used": [
+        "SOFT"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 1.0,
+          "rate": 0.057
+        },
+        "MEDIUM": {
+          "offset": 0.72,
+          "rate": 0.101
+        },
+        "HARD": {
+          "offset": 1.02,
+          "rate": 0.119
+        }
+      },
+      "pitLoss": 34.1,
+      "warmup": 1.9,
+      "twoCompounds": false
+    },
+    "stops": [
+      {
+        "after": 41,
+        "compound": "SOFT"
+      },
+      {
+        "after": 50,
+        "compound": "MEDIUM"
+      }
+    ],
+    "expectedDelta": -66.40899999999965
+  },
+  {
+    "context": {
+      "remaining": 25,
+      "compound": "HARD",
+      "age": 7,
+      "used": [
+        "HARD"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 0.72,
+          "rate": 0.158
+        },
+        "MEDIUM": {
+          "offset": 1.01,
+          "rate": 0.267
+        },
+        "HARD": {
+          "offset": 0.08,
+          "rate": 0.17
+        }
+      },
+      "pitLoss": 16.6,
+      "warmup": 0.6,
+      "twoCompounds": false
+    },
+    "stops": [],
+    "expectedDelta": 0.0
+  },
+  {
+    "context": {
+      "remaining": 55,
+      "compound": "MEDIUM",
+      "age": 0,
+      "used": [
+        "MEDIUM"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 1.6,
+          "rate": 0.266
+        },
+        "MEDIUM": {
+          "offset": 0.15,
+          "rate": 0.025
+        },
+        "HARD": {
+          "offset": 0.83,
+          "rate": 0.186
+        }
+      },
+      "pitLoss": 16.3,
+      "warmup": 2.1,
+      "twoCompounds": false
+    },
+    "stops": [
+      {
+        "after": 49,
+        "compound": "HARD"
+      }
+    ],
+    "expectedDelta": 17.544999999999163
+  },
+  {
+    "context": {
+      "remaining": 69,
+      "compound": "SOFT",
+      "age": 37,
+      "used": [
+        "SOFT"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 1.88,
+          "rate": 0.03
+        },
+        "MEDIUM": {
+          "offset": 1.22,
+          "rate": 0.235
+        },
+        "HARD": {
+          "offset": 0.23,
+          "rate": 0.087
+        }
+      },
+      "pitLoss": 29.0,
+      "warmup": 1.3,
+      "twoCompounds": false
+    },
+    "stops": [
+      {
+        "after": 14,
+        "compound": "SOFT"
+      },
+      {
+        "after": 24,
+        "compound": "SOFT"
+      }
+    ],
+    "expectedDelta": -37.05000000000018
+  },
+  {
+    "context": {
+      "remaining": 39,
+      "compound": "SOFT",
+      "age": 7,
+      "used": [
+        "SOFT"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 0.3,
+          "rate": 0.086
+        },
+        "MEDIUM": {
+          "offset": 1.07,
+          "rate": 0.033
+        },
+        "HARD": {
+          "offset": 0.66,
+          "rate": 0.092
+        }
+      },
+      "pitLoss": 13.8,
+      "warmup": 2.2,
+      "twoCompounds": false
+    },
+    "stops": [],
+    "expectedDelta": 0.0
+  },
+  {
+    "context": {
+      "remaining": 62,
+      "compound": "SOFT",
+      "age": 31,
+      "used": [
+        "SOFT"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 1.86,
+          "rate": 0.284
+        },
+        "MEDIUM": {
+          "offset": 0.47,
+          "rate": 0.207
+        },
+        "HARD": {
+          "offset": 0.28,
+          "rate": 0.02
+        }
+      },
+      "pitLoss": 27.1,
+      "warmup": 1.6,
+      "twoCompounds": false
+    },
+    "stops": [
+      {
+        "after": 11,
+        "compound": "MEDIUM"
+      }
+    ],
+    "expectedDelta": -748.6930000000075
+  },
+  {
+    "context": {
+      "remaining": 40,
+      "compound": "HARD",
+      "age": 12,
+      "used": [
+        "HARD"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 1.22,
+          "rate": 0.042
+        },
+        "MEDIUM": {
+          "offset": 1.72,
+          "rate": 0.015
+        },
+        "HARD": {
+          "offset": 0.81,
+          "rate": 0.187
+        }
+      },
+      "pitLoss": 13.4,
+      "warmup": 0.5,
+      "twoCompounds": false
+    },
+    "stops": [
+      {
+        "after": 18,
+        "compound": "SOFT"
+      },
+      {
+        "after": 34,
+        "compound": "SOFT"
+      }
+    ],
+    "expectedDelta": -124.1269999999995
+  },
+  {
+    "context": {
+      "remaining": 16,
+      "compound": "HARD",
+      "age": 19,
+      "used": [
+        "HARD"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 0.07,
+          "rate": 0.129
+        },
+        "MEDIUM": {
+          "offset": 0.24,
+          "rate": 0.088
+        },
+        "HARD": {
+          "offset": 1.88,
+          "rate": 0.079
+        }
+      },
+      "pitLoss": 16.7,
+      "warmup": 0.9,
+      "twoCompounds": false
+    },
+    "stops": [],
+    "expectedDelta": 0.0
+  },
+  {
+    "context": {
+      "remaining": 44,
+      "compound": "MEDIUM",
+      "age": 34,
+      "used": [
+        "MEDIUM"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 1.23,
+          "rate": 0.192
+        },
+        "MEDIUM": {
+          "offset": 0.23,
+          "rate": 0.1
+        },
+        "HARD": {
+          "offset": 1.82,
+          "rate": 0.196
+        }
+      },
+      "pitLoss": 14.0,
+      "warmup": 0.6,
+      "twoCompounds": false
+    },
+    "stops": [
+      {
+        "after": 26,
+        "compound": "HARD"
+      }
+    ],
+    "expectedDelta": -50.09200000000055
+  },
+  {
+    "context": {
+      "remaining": 3,
+      "compound": "SOFT",
+      "age": 31,
+      "used": [
+        "SOFT"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 1.79,
+          "rate": 0.273
+        },
+        "MEDIUM": {
+          "offset": 0.5,
+          "rate": 0.165
+        },
+        "HARD": {
+          "offset": 1.69,
+          "rate": 0.081
+        }
+      },
+      "pitLoss": 35.5,
+      "warmup": 0.3,
+      "twoCompounds": false
+    },
+    "stops": [
+      {
+        "after": 1,
+        "compound": "MEDIUM"
+      },
+      {
+        "after": 2,
+        "compound": "HARD"
+      }
+    ],
+    "expectedDelta": 52.46500000000003
+  },
+  {
+    "context": {
+      "remaining": 61,
+      "compound": "HARD",
+      "age": 1,
+      "used": [
+        "HARD"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 1.75,
+          "rate": 0.014
+        },
+        "MEDIUM": {
+          "offset": 1.98,
+          "rate": 0.05
+        },
+        "HARD": {
+          "offset": 1.92,
+          "rate": 0.258
+        }
+      },
+      "pitLoss": 17.1,
+      "warmup": 0.5,
+      "twoCompounds": false
+    },
+    "stops": [],
+    "expectedDelta": 0.0
+  },
+  {
+    "context": {
+      "remaining": 40,
+      "compound": "MEDIUM",
+      "age": 18,
+      "used": [
+        "MEDIUM"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 1.01,
+          "rate": 0.204
+        },
+        "MEDIUM": {
+          "offset": 1.34,
+          "rate": 0.176
+        },
+        "HARD": {
+          "offset": 0.67,
+          "rate": 0.12
+        }
+      },
+      "pitLoss": 13.2,
+      "warmup": 1.1,
+      "twoCompounds": false
+    },
+    "stops": [
+      {
+        "after": 6,
+        "compound": "SOFT"
+      }
+    ],
+    "expectedDelta": -124.82800000000043
+  },
+  {
+    "context": {
+      "remaining": 27,
+      "compound": "MEDIUM",
+      "age": 1,
+      "used": [
+        "MEDIUM"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 0.75,
+          "rate": 0.209
+        },
+        "MEDIUM": {
+          "offset": 1.83,
+          "rate": 0.14
+        },
+        "HARD": {
+          "offset": 1.3,
+          "rate": 0.037
+        }
+      },
+      "pitLoss": 30.1,
+      "warmup": 1.5,
+      "twoCompounds": false
+    },
+    "stops": [
+      {
+        "after": 5,
+        "compound": "MEDIUM"
+      },
+      {
+        "after": 10,
+        "compound": "SOFT"
+      }
+    ],
+    "expectedDelta": 23.84400000000096
+  },
+  {
+    "context": {
+      "remaining": 72,
+      "compound": "MEDIUM",
+      "age": 1,
+      "used": [
+        "MEDIUM"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 0.47,
+          "rate": 0.08
+        },
+        "MEDIUM": {
+          "offset": 0.41,
+          "rate": 0.268
+        },
+        "HARD": {
+          "offset": 1.72,
+          "rate": 0.072
+        }
+      },
+      "pitLoss": 30.4,
+      "warmup": 1.0,
+      "twoCompounds": false
+    },
+    "stops": [],
+    "expectedDelta": 0.0
+  },
+  {
+    "context": {
+      "remaining": 63,
+      "compound": "MEDIUM",
+      "age": 39,
+      "used": [
+        "MEDIUM"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 0.47,
+          "rate": 0.24
+        },
+        "MEDIUM": {
+          "offset": 1.57,
+          "rate": 0.175
+        },
+        "HARD": {
+          "offset": 0.31,
+          "rate": 0.154
+        }
+      },
+      "pitLoss": 11.6,
+      "warmup": 1.1,
+      "twoCompounds": false
+    },
+    "stops": [
+      {
+        "after": 49,
+        "compound": "MEDIUM"
+      }
+    ],
+    "expectedDelta": -202.89999999999964
+  },
+  {
+    "context": {
+      "remaining": 38,
+      "compound": "MEDIUM",
+      "age": 37,
+      "used": [
+        "MEDIUM"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 0.64,
+          "rate": 0.243
+        },
+        "MEDIUM": {
+          "offset": 0.9,
+          "rate": 0.146
+        },
+        "HARD": {
+          "offset": 0.89,
+          "rate": 0.155
+        }
+      },
+      "pitLoss": 17.4,
+      "warmup": 1.4,
+      "twoCompounds": false
+    },
+    "stops": [
+      {
+        "after": 2,
+        "compound": "HARD"
+      },
+      {
+        "after": 10,
+        "compound": "MEDIUM"
+      }
+    ],
+    "expectedDelta": -199.91600000000017
+  },
+  {
+    "context": {
+      "remaining": 30,
+      "compound": "HARD",
+      "age": 25,
+      "used": [
+        "HARD"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 1.43,
+          "rate": 0.155
+        },
+        "MEDIUM": {
+          "offset": 0.83,
+          "rate": 0.22
+        },
+        "HARD": {
+          "offset": 0.15,
+          "rate": 0.012
+        }
+      },
+      "pitLoss": 31.0,
+      "warmup": 1.8,
+      "twoCompounds": false
+    },
+    "stops": [],
+    "expectedDelta": 0.0
+  },
+  {
+    "context": {
+      "remaining": 43,
+      "compound": "MEDIUM",
+      "age": 27,
+      "used": [
+        "MEDIUM"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 1.72,
+          "rate": 0.29
+        },
+        "MEDIUM": {
+          "offset": 1.49,
+          "rate": 0.235
+        },
+        "HARD": {
+          "offset": 0.2,
+          "rate": 0.091
+        }
+      },
+      "pitLoss": 36.5,
+      "warmup": 1.3,
+      "twoCompounds": false
+    },
+    "stops": [
+      {
+        "after": 11,
+        "compound": "MEDIUM"
+      }
+    ],
+    "expectedDelta": -247.95999999999913
+  },
+  {
+    "context": {
+      "remaining": 62,
+      "compound": "SOFT",
+      "age": 35,
+      "used": [
+        "SOFT"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 1.36,
+          "rate": 0.154
+        },
+        "MEDIUM": {
+          "offset": 0.46,
+          "rate": 0.18
+        },
+        "HARD": {
+          "offset": 1.34,
+          "rate": 0.118
+        }
+      },
+      "pitLoss": 39.9,
+      "warmup": 1.4,
+      "twoCompounds": false
+    },
+    "stops": [
+      {
+        "after": 6,
+        "compound": "MEDIUM"
+      },
+      {
+        "after": 8,
+        "compound": "SOFT"
+      }
+    ],
+    "expectedDelta": -289.3899999999985
+  },
+  {
+    "context": {
+      "remaining": 70,
+      "compound": "MEDIUM",
+      "age": 21,
+      "used": [
+        "MEDIUM"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 0.15,
+          "rate": 0.069
+        },
+        "MEDIUM": {
+          "offset": 1.96,
+          "rate": 0.278
+        },
+        "HARD": {
+          "offset": 0.88,
+          "rate": 0.284
+        }
+      },
+      "pitLoss": 11.6,
+      "warmup": 0.4,
+      "twoCompounds": false
+    },
+    "stops": [],
+    "expectedDelta": 0.0
+  },
+  {
+    "context": {
+      "remaining": 50,
+      "compound": "MEDIUM",
+      "age": 12,
+      "used": [
+        "MEDIUM"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 1.62,
+          "rate": 0.01
+        },
+        "MEDIUM": {
+          "offset": 1.68,
+          "rate": 0.074
+        },
+        "HARD": {
+          "offset": 0.52,
+          "rate": 0.267
+        }
+      },
+      "pitLoss": 22.1,
+      "warmup": 2.9,
+      "twoCompounds": false
+    },
+    "stops": [
+      {
+        "after": 45,
+        "compound": "MEDIUM"
+      }
+    ],
+    "expectedDelta": 3.9099999999998545
+  },
+  {
+    "context": {
+      "remaining": 27,
+      "compound": "HARD",
+      "age": 27,
+      "used": [
+        "HARD"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 0.76,
+          "rate": 0.095
+        },
+        "MEDIUM": {
+          "offset": 1.1,
+          "rate": 0.081
+        },
+        "HARD": {
+          "offset": 1.99,
+          "rate": 0.281
+        }
+      },
+      "pitLoss": 36.7,
+      "warmup": 2.3,
+      "twoCompounds": false
+    },
+    "stops": [
+      {
+        "after": 20,
+        "compound": "HARD"
+      },
+      {
+        "after": 21,
+        "compound": "MEDIUM"
+      }
+    ],
+    "expectedDelta": -24.47499999999991
+  },
+  {
+    "context": {
+      "remaining": 18,
+      "compound": "SOFT",
+      "age": 37,
+      "used": [
+        "SOFT"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 0.95,
+          "rate": 0.046
+        },
+        "MEDIUM": {
+          "offset": 0.09,
+          "rate": 0.202
+        },
+        "HARD": {
+          "offset": 1.53,
+          "rate": 0.283
+        }
+      },
+      "pitLoss": 30.3,
+      "warmup": 2.7,
+      "twoCompounds": false
+    },
+    "stops": [],
+    "expectedDelta": 0.0
+  },
+  {
+    "context": {
+      "remaining": 39,
+      "compound": "MEDIUM",
+      "age": 27,
+      "used": [
+        "MEDIUM"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 0.95,
+          "rate": 0.011
+        },
+        "MEDIUM": {
+          "offset": 0.17,
+          "rate": 0.105
+        },
+        "HARD": {
+          "offset": 1.19,
+          "rate": 0.268
+        }
+      },
+      "pitLoss": 21.2,
+      "warmup": 1.8,
+      "twoCompounds": false
+    },
+    "stops": [
+      {
+        "after": 12,
+        "compound": "MEDIUM"
+      }
+    ],
+    "expectedDelta": -87.56500000000051
+  },
+  {
+    "context": {
+      "remaining": 78,
+      "compound": "HARD",
+      "age": 26,
+      "used": [
+        "HARD"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 0.21,
+          "rate": 0.26
+        },
+        "MEDIUM": {
+          "offset": 1.95,
+          "rate": 0.129
+        },
+        "HARD": {
+          "offset": 0.45,
+          "rate": 0.293
+        }
+      },
+      "pitLoss": 30.2,
+      "warmup": 1.6,
+      "twoCompounds": false
+    },
+    "stops": [
+      {
+        "after": 53,
+        "compound": "MEDIUM"
+      },
+      {
+        "after": 60,
+        "compound": "HARD"
+      }
+    ],
+    "expectedDelta": -544.9369999999981
+  },
+  {
+    "context": {
+      "remaining": 47,
+      "compound": "MEDIUM",
+      "age": 21,
+      "used": [
+        "MEDIUM"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 1.24,
+          "rate": 0.267
+        },
+        "MEDIUM": {
+          "offset": 0.89,
+          "rate": 0.164
+        },
+        "HARD": {
+          "offset": 1.62,
+          "rate": 0.283
+        }
+      },
+      "pitLoss": 8.2,
+      "warmup": 1.2,
+      "twoCompounds": false
+    },
+    "stops": [],
+    "expectedDelta": 0.0
+  },
+  {
+    "context": {
+      "remaining": 43,
+      "compound": "MEDIUM",
+      "age": 20,
+      "used": [
+        "MEDIUM"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 1.24,
+          "rate": 0.264
+        },
+        "MEDIUM": {
+          "offset": 1.05,
+          "rate": 0.214
+        },
+        "HARD": {
+          "offset": 0.73,
+          "rate": 0.07
+        }
+      },
+      "pitLoss": 35.8,
+      "warmup": 0.9,
+      "twoCompounds": false
+    },
+    "stops": [
+      {
+        "after": 29,
+        "compound": "HARD"
+      }
+    ],
+    "expectedDelta": -127.6880000000001
+  },
+  {
+    "context": {
+      "remaining": 69,
+      "compound": "MEDIUM",
+      "age": 22,
+      "used": [
+        "MEDIUM"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 0.52,
+          "rate": 0.031
+        },
+        "MEDIUM": {
+          "offset": 1.96,
+          "rate": 0.112
+        },
+        "HARD": {
+          "offset": 0.24,
+          "rate": 0.133
+        }
+      },
+      "pitLoss": 9.3,
+      "warmup": 1.2,
+      "twoCompounds": false
+    },
+    "stops": [
+      {
+        "after": 28,
+        "compound": "HARD"
+      },
+      {
+        "after": 43,
+        "compound": "HARD"
+      }
+    ],
+    "expectedDelta": -313.77000000000135
+  },
+  {
+    "context": {
+      "remaining": 26,
+      "compound": "HARD",
+      "age": 19,
+      "used": [
+        "HARD"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 1.67,
+          "rate": 0.126
+        },
+        "MEDIUM": {
+          "offset": 0.39,
+          "rate": 0.056
+        },
+        "HARD": {
+          "offset": 0.36,
+          "rate": 0.127
+        }
+      },
+      "pitLoss": 13.2,
+      "warmup": 2.0,
+      "twoCompounds": false
+    },
+    "stops": [],
+    "expectedDelta": 0.0
+  },
+  {
+    "context": {
+      "remaining": 55,
+      "compound": "SOFT",
+      "age": 20,
+      "used": [
+        "SOFT"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 0.86,
+          "rate": 0.101
+        },
+        "MEDIUM": {
+          "offset": 1.58,
+          "rate": 0.039
+        },
+        "HARD": {
+          "offset": 0.46,
+          "rate": 0.14
+        }
+      },
+      "pitLoss": 5.3,
+      "warmup": 0.2,
+      "twoCompounds": false
+    },
+    "stops": [
+      {
+        "after": 10,
+        "compound": "SOFT"
+      }
+    ],
+    "expectedDelta": -130.85000000000036
+  },
+  {
+    "context": {
+      "remaining": 9,
+      "compound": "SOFT",
+      "age": 2,
+      "used": [
+        "SOFT"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 1.9,
+          "rate": 0.073
+        },
+        "MEDIUM": {
+          "offset": 0.58,
+          "rate": 0.024
+        },
+        "HARD": {
+          "offset": 1.81,
+          "rate": 0.296
+        }
+      },
+      "pitLoss": 11.2,
+      "warmup": 0.3,
+      "twoCompounds": false
+    },
+    "stops": [
+      {
+        "after": 4,
+        "compound": "MEDIUM"
+      },
+      {
+        "after": 5,
+        "compound": "SOFT"
+      }
+    ],
+    "expectedDelta": 19.198000000000093
+  },
+  {
+    "context": {
+      "remaining": 51,
+      "compound": "HARD",
+      "age": 3,
+      "used": [
+        "HARD"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 1.84,
+          "rate": 0.097
+        },
+        "MEDIUM": {
+          "offset": 0.46,
+          "rate": 0.111
+        },
+        "HARD": {
+          "offset": 1.41,
+          "rate": 0.086
+        }
+      },
+      "pitLoss": 9.3,
+      "warmup": 1.9,
+      "twoCompounds": false
+    },
+    "stops": [],
+    "expectedDelta": 0.0
+  },
+  {
+    "context": {
+      "remaining": 74,
+      "compound": "SOFT",
+      "age": 11,
+      "used": [
+        "SOFT"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 1.14,
+          "rate": 0.11
+        },
+        "MEDIUM": {
+          "offset": 0.74,
+          "rate": 0.208
+        },
+        "HARD": {
+          "offset": 1.64,
+          "rate": 0.114
+        }
+      },
+      "pitLoss": 11.6,
+      "warmup": 0.7,
+      "twoCompounds": false
+    },
+    "stops": [
+      {
+        "after": 21,
+        "compound": "SOFT"
+      }
+    ],
+    "expectedDelta": -174.2599999999993
+  },
+  {
+    "context": {
+      "remaining": 73,
+      "compound": "MEDIUM",
+      "age": 23,
+      "used": [
+        "MEDIUM"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 1.04,
+          "rate": 0.212
+        },
+        "MEDIUM": {
+          "offset": 1.54,
+          "rate": 0.034
+        },
+        "HARD": {
+          "offset": 0.74,
+          "rate": 0.178
+        }
+      },
+      "pitLoss": 13.3,
+      "warmup": 1.7,
+      "twoCompounds": false
+    },
+    "stops": [
+      {
+        "after": 14,
+        "compound": "SOFT"
+      },
+      {
+        "after": 69,
+        "compound": "MEDIUM"
+      }
+    ],
+    "expectedDelta": 185.1280000000006
+  },
+  {
+    "context": {
+      "remaining": 15,
+      "compound": "HARD",
+      "age": 15,
+      "used": [
+        "HARD"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 0.2,
+          "rate": 0.178
+        },
+        "MEDIUM": {
+          "offset": 0.94,
+          "rate": 0.274
+        },
+        "HARD": {
+          "offset": 1.88,
+          "rate": 0.138
+        }
+      },
+      "pitLoss": 18.2,
+      "warmup": 2.6,
+      "twoCompounds": false
+    },
+    "stops": [],
+    "expectedDelta": 0.0
+  },
+  {
+    "context": {
+      "remaining": 56,
+      "compound": "HARD",
+      "age": 37,
+      "used": [
+        "HARD"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 0.36,
+          "rate": 0.181
+        },
+        "MEDIUM": {
+          "offset": 1.42,
+          "rate": 0.285
+        },
+        "HARD": {
+          "offset": 0.73,
+          "rate": 0.159
+        }
+      },
+      "pitLoss": 8.3,
+      "warmup": 2.6,
+      "twoCompounds": false
+    },
+    "stops": [
+      {
+        "after": 55,
+        "compound": "HARD"
+      }
+    ],
+    "expectedDelta": -3.7280000000000655
+  },
+  {
+    "context": {
+      "remaining": 38,
+      "compound": "HARD",
+      "age": 30,
+      "used": [
+        "HARD"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 0.55,
+          "rate": 0.099
+        },
+        "MEDIUM": {
+          "offset": 1.27,
+          "rate": 0.068
+        },
+        "HARD": {
+          "offset": 1.02,
+          "rate": 0.188
+        }
+      },
+      "pitLoss": 24.0,
+      "warmup": 0.7,
+      "twoCompounds": false
+    },
+    "stops": [
+      {
+        "after": 3,
+        "compound": "HARD"
+      },
+      {
+        "after": 36,
+        "compound": "MEDIUM"
+      }
+    ],
+    "expectedDelta": -179.76800000000048
+  },
+  {
+    "context": {
+      "remaining": 73,
+      "compound": "HARD",
+      "age": 27,
+      "used": [
+        "HARD"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 0.28,
+          "rate": 0.204
+        },
+        "MEDIUM": {
+          "offset": 0.53,
+          "rate": 0.068
+        },
+        "HARD": {
+          "offset": 1.74,
+          "rate": 0.072
+        }
+      },
+      "pitLoss": 37.7,
+      "warmup": 0.1,
+      "twoCompounds": false
+    },
+    "stops": [],
+    "expectedDelta": 0.0
+  },
+  {
+    "context": {
+      "remaining": 43,
+      "compound": "SOFT",
+      "age": 34,
+      "used": [
+        "SOFT"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 1.77,
+          "rate": 0.111
+        },
+        "MEDIUM": {
+          "offset": 0.54,
+          "rate": 0.036
+        },
+        "HARD": {
+          "offset": 0.91,
+          "rate": 0.103
+        }
+      },
+      "pitLoss": 8.0,
+      "warmup": 1.8,
+      "twoCompounds": false
+    },
+    "stops": [
+      {
+        "after": 26,
+        "compound": "HARD"
+      }
+    ],
+    "expectedDelta": -119.12799999999879
+  },
+  {
+    "context": {
+      "remaining": 14,
+      "compound": "SOFT",
+      "age": 18,
+      "used": [
+        "SOFT"
+      ]
+    },
+    "settings": {
+      "tyres": {
+        "SOFT": {
+          "offset": 1.5,
+          "rate": 0.185
+        },
+        "MEDIUM": {
+          "offset": 1.66,
+          "rate": 0.017
+        },
+        "HARD": {
+          "offset": 0.88,
+          "rate": 0.179
+        }
+      },
+      "pitLoss": 11.9,
+      "warmup": 0.5,
+      "twoCompounds": false
+    },
+    "stops": [
+      {
+        "after": 4,
+        "compound": "MEDIUM"
+      },
+      {
+        "after": 9,
+        "compound": "HARD"
+      }
+    ],
+    "expectedDelta": -24.564999999999827
+  }
+]

@@ -1,0 +1,92 @@
+[
+  {
+    "event": "Barcelona-Catalunya Grand Prix",
+    "race_date": "2026-06-14",
+    "season": 2026,
+    "local_path": "dist/assets/barcelona-catalunya.webp",
+    "source_article_url": "https://www.formula1.com/en/latest/article/hamilton-claims-stellar-maiden-grand-prix-victory-for-ferrari-in-barcelona-as-antonelli-suffers-shock-retirement.4yCXiPLHUdcnl2BwNpqUIa",
+    "source_article_title": "2026 Barcelona-Catalunya Grand Prix race report and highlights: Lewis Hamilton claims stellar maiden Grand Prix victory for Ferrari as Kimi Antonelli suffers shock retirement",
+    "source_published_at": "2026-06-14T14:54:34.761Z",
+    "exact_asset_url": "https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000001/trackside-images/2026/F1_Grand_Prix_of_Barcelona_Catalunya/2281536586.webp",
+    "asset_provenance": "Observed img.currentSrc in the official race report body; its social and JSON-LD hero pictures depict post-race portraits, so a race-action body image was selected. No URL was synthesized.",
+    "scene": "Andrea Kimi Antonelli and George Russell race side by side in their Mercedes cars at Barcelona-Catalunya.",
+    "source_caption": "Antonelli stuck close by Russell throughout the race",
+    "source_alt": "BARCELONA, SPAIN - JUNE 14: Andrea Kimi Antonelli of Italy driving the (12) Mercedes AMG Petronas",
+    "key_moment_assessment": "A two-car Mercedes battle, relevant to their close contest before Antonelli retired. The source caption does not establish the exact lap or prove this is the decisive pass.",
+    "suggested_object_position": "50% 72%",
+    "dimensions": {
+      "width": 3086,
+      "height": 2057,
+      "format": "WEBP"
+    },
+    "bytes": 459094,
+    "sha256": "a8ec53d8b50eadc34b8220340606638700d596a72582a8ff127eb5b22a7ac6c4",
+    "copyright": {
+      "site_notice": "© 2003-2026 Formula One World Championship Limited",
+      "image_credit": "No individual photographer or owner credit exposed alongside this image in the source article. Exact trackside asset ID retained in URL.",
+      "reuse_status": "No open reuse license found. F1 guidelines state that still image rights belong to their respective owners and reproduction requires consent of the relevant rights holder. Download does not constitute reuse permission.",
+      "guidelines_url": "https://www.formula1.com/en/information/guidelines.4EOKE9RRqevL4niTK9kWyt"
+    },
+    "verification": "Visually inspected; official report date, event title, source alt-text and 2026 asset path agree."
+  },
+  {
+    "event": "Monaco Grand Prix",
+    "race_date": "2026-06-07",
+    "season": 2026,
+    "local_path": "dist/assets/monaco.webp",
+    "source_article_url": "https://www.formula1.com/en/latest/article/antonelli-secures-brilliant-victory-in-chaotic-monaco-grand-prix-amid-multiple-shock-retirements.27e644586K83z0NZd6efsz",
+    "source_article_title": "2026 Monaco Grand Prix race report and highlights: Kimi Antonelli secures victory in chaotic Monaco Grand Prix amid multiple shock retirements",
+    "source_published_at": "2026-06-07T15:40:52.722Z",
+    "exact_asset_url": "https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000001/trackside-images/2026/F1_Grand_Prix_of_Monaco/2280325392.webp",
+    "asset_provenance": "Observed img.currentSrc in the official race report body; its social and JSON-LD hero pictures depict post-race portraits, so a race-action body image was selected. No URL was synthesized.",
+    "scene": "Kimi Antonelli leads the tightly packed field through the first corner at Monaco, with a Ferrari immediately behind.",
+    "source_caption": "Antonelli made a strong start to hold onto his lead",
+    "source_alt": "MONTE-CARLO, MONACO - JUNE 07: Andrea Kimi Antonelli of Italy driving the (12) Mercedes AMG",
+    "key_moment_assessment": "Yes: the official report identifies this as Antonelli holding the lead at the race start.",
+    "suggested_object_position": "50% 68%",
+    "dimensions": {
+      "width": 3392,
+      "height": 2261,
+      "format": "WEBP"
+    },
+    "bytes": 609510,
+    "sha256": "5d6063779e9dee671ff9d979b8ca835b13da5de2a1b46aa4ebb41849460f408f",
+    "copyright": {
+      "site_notice": "© 2003-2026 Formula One World Championship Limited",
+      "image_credit": "No individual photographer or owner credit exposed alongside this image in the source article. Exact trackside asset ID retained in URL.",
+      "reuse_status": "No open reuse license found. F1 guidelines state that still image rights belong to their respective owners and reproduction requires consent of the relevant rights holder. Download does not constitute reuse permission.",
+      "guidelines_url": "https://www.formula1.com/en/information/guidelines.4EOKE9RRqevL4niTK9kWyt"
+    },
+    "verification": "Visually inspected; official report date, event title, source alt-text and 2026 asset path agree."
+  },
+  {
+    "event": "Canadian Grand Prix",
+    "race_date": "2026-05-24",
+    "season": 2026,
+    "local_path": "dist/assets/canada.webp",
+    "source_article_url": "https://www.formula1.com/en/latest/article/antonelli-wins-dramatic-canadian-grand-prix-as-russell-retires-amid-thrilling-mercedes-battle.MzvclJaqCidlYMUXonuDq",
+    "source_article_title": "2026 Canadian Grand Prix race report and highlights: Kimi Antonelli wins dramatic Canadian Grand Prix as George Russell retires amid thrilling Mercedes battle",
+    "source_published_at": "2026-05-24T21:57:14.193Z",
+    "exact_asset_url": "https://media.formula1.com/image/upload/t_16by9South/c_lfill,w_3392/q_auto/v1740000001/trackside-images/2026/F1_Grand_Prix_of_Canada/2278028975.webp",
+    "asset_provenance": "Observed img.currentSrc in the official race report body; its social and JSON-LD hero pictures depict post-race portraits, so a race-action body image was selected. No URL was synthesized.",
+    "scene": "Lewis Hamilton in his red Ferrari leads Max Verstappen in his Red Bull through a Montreal corner.",
+    "source_caption": "Hamilton enjoyed a close duel with former title rival Verstappen",
+    "source_alt": "MONTREAL, QUEBEC - MAY 24: Lewis Hamilton of Great Britain driving the (44) Scuderia Ferrari SF-26",
+    "key_moment_assessment": "Yes: illustrates the late Hamilton–Verstappen duel for second place described beside the photograph; the image alone does not establish the exact passing moment.",
+    "suggested_object_position": "50% 65%",
+    "dimensions": {
+      "width": 3392,
+      "height": 1908,
+      "format": "WEBP"
+    },
+    "bytes": 495522,
+    "sha256": "5f6824cc7fd1e786a5a28f31b6d6a7e4680adc9e67bc0c3733ebbe793735bca1",
+    "copyright": {
+      "site_notice": "© 2003-2026 Formula One World Championship Limited",
+      "image_credit": "No individual photographer or owner credit exposed alongside this image in the source article. Exact trackside asset ID retained in URL.",
+      "reuse_status": "No open reuse license found. F1 guidelines state that still image rights belong to their respective owners and reproduction requires consent of the relevant rights holder. Download does not constitute reuse permission.",
+      "guidelines_url": "https://www.formula1.com/en/information/guidelines.4EOKE9RRqevL4niTK9kWyt"
+    },
+    "verification": "Visually inspected; official report date, event title, source alt-text and 2026 asset path agree."
+  }
+]

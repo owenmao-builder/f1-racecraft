@@ -1,0 +1,63 @@
+{
+  "verifiedOn": "2026-09-19",
+  "selection": "One genuine, unedited Formula1.com race-report photograph per event; all three photographs were visually inspected.",
+  "copyrightNotice": "© 2003-2026 Formula One World Championship Limited",
+  "imageSpecificReuseTerms": "Unknown. No image-specific reuse licence was displayed in the inspected reports.",
+  "photographerCredit": "The inspected report image captions do not identify individual photographers. Attribute the source as Formula1.com; do not invent a photographer credit.",
+  "assets": [
+    {
+      "raceId": "italy",
+      "event": "2026 Italian Grand Prix",
+      "venue": "Autodromo Nazionale Monza, Italy",
+      "raceDate": "2026-09-06",
+      "localPath": "dist/assets/italy.webp",
+      "sourcePage": "https://www.formula1.com/en/latest/article/antonelli-beats-russell-to-italian-grand-prix-win-with-stunning-comeback-drive.15WtFEBT5JEe4drdeO88t2",
+      "sourcePublishedAt": "2026-09-06T15:11:53.355Z",
+      "imageUrl": "https://media.formula1.com/image/upload/t_16by9South/c_lfill,w_3392/q_auto/v1740000001/trackside-images/2026/F1_Grand_Prix_of_Italy/2293812411.webp",
+      "imageUrlEvidence": "Exact URL of the in-article image associated with the race-winning Mercedes battle caption.",
+      "officialCaption": "Antonelli passed Russell for the win with just a handful of laps to go",
+      "scene": "A panning shot of the two Mercedes cars racing closely together at Monza, with Russell's number 63 car sharper in the right foreground and Antonelli following to the left.",
+      "keyMomentMatch": "Matches the race's decisive Antonelli-versus-Russell fight and the official report's accompanying caption. The photograph shows the chase; it does not by itself establish the exact instant of the completed overtake.",
+      "width": 3392,
+      "height": 1908,
+      "credit": "Source: Formula1.com; individual photographer not stated in the inspected caption.",
+      "cropAdvice": "Cars occupy the lower half; retain the bottom and favour the right side when cropping."
+    },
+    {
+      "raceId": "netherlands",
+      "event": "2026 Dutch Grand Prix",
+      "venue": "Circuit Zandvoort, Netherlands",
+      "raceDate": "2026-08-23",
+      "localPath": "dist/assets/netherlands.webp",
+      "sourcePage": "https://www.formula1.com/en/latest/article/norris-wins-dramatic-dutch-grand-prix-from-antonelli-and-russell-as-verstappen-crashes-out.Zn7iYevVGp5eHzFkTEAz7",
+      "sourcePublishedAt": "2026-08-23T15:27:25.332Z",
+      "imageUrl": "https://media.formula1.com/image/upload/t_16by9North/c_lfill,w_3392/q_auto/v1740000001/fom-website/2026/Netherlands/GettyImages-2291688093.webp",
+      "imageUrlEvidence": "Exact URL of the in-article restart photograph.",
+      "officialCaption": "Antonelli made a strong launch at the restart to move into the lead",
+      "scene": "Antonelli's number 12 Mercedes leads the field toward the camera at Zandvoort, with the other Mercedes and two McLarens visibly following.",
+      "keyMomentMatch": "Directly matches the official report's key restart moment when Antonelli took the lead from Norris. It is not a photo of Norris's later winning overtake or Verstappen's crash.",
+      "width": 3392,
+      "height": 1908,
+      "credit": "Source: Formula1.com. Asset filename identifies Getty Images, but the report does not name the photographer.",
+      "cropAdvice": "Keep the number 12 Mercedes near the centre; a centred crop retains the lead car and chasing McLarens."
+    },
+    {
+      "raceId": "hungary",
+      "event": "2026 Hungarian Grand Prix",
+      "venue": "Hungaroring, Hungary",
+      "raceDate": "2026-07-26",
+      "localPath": "dist/assets/hungary.webp",
+      "sourcePage": "https://www.formula1.com/en/latest/article/norris-beats-verstappen-and-antonelli-to-victory-in-dramatic-hungarian-gp.5JQmohRAKABD2asRsMWogj",
+      "sourcePublishedAt": "2026-07-26T14:54:41.131Z",
+      "imageUrl": "https://media.formula1.com/image/upload/t_16by9North/c_lfill,w_3392/q_auto/v1740000001/trackside-images/2026/F1_Grand_Prix_of_Hungary/2287710743.webp",
+      "imageUrlEvidence": "Exact URL of the in-article photograph of the McLaren team-mate battle.",
+      "officialCaption": "Piastri led Norris after clearing his team mate on the opening lap of the race",
+      "scene": "A close front view of Piastri's number 81 McLaren leading Norris's McLaren, with both cars in the frame at the Hungaroring.",
+      "keyMomentMatch": "Matches the opening phase of the central McLaren team-mate battle described in the race report. It does not show Piastri's later collision, gearbox retirement, or Norris taking the chequered flag.",
+      "width": 3392,
+      "height": 1908,
+      "credit": "Source: Formula1.com; individual photographer not stated in the inspected caption.",
+      "cropAdvice": "A centred or slightly right-weighted crop preserves Piastri's car and the following McLaren."
+    }
+  ]
+}

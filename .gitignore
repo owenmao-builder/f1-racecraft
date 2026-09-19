@@ -1,0 +1,7 @@
+.sites-runtime/
+.DS_Store
+.env
+node_modules/
+.openai/
+.env.*
+!.env.example
