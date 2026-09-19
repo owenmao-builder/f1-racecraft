@@ -3,7 +3,7 @@ import { analyse, availableOpponents, compareChoices, number } from './analysis-
 const cache=new Map();
 let disposePit=()=>{};
 let current=null,revision=0,result=null,request=null,settings=null,onRace;
-let preferences={driver:'RUS',opponent:'VER',lap:32,corner:3,question:'attack'};
+let preferences={driver:'RUS',opponent:'VER',lap:32,corner:3};
 const $=s=>document.querySelector(s);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const f=(x,d=1)=>number(x)?x.toFixed(d):'—';
@@ -11,11 +11,11 @@ const compound={SOFT:'软胎',MEDIUM:'中性胎',HARD:'硬胎',INTERMEDIATE:'半
 const repoLinks=`<a href="https://github.com/theOehrly/Fast-F1" target="_blank" rel="noreferrer">FastF1 ↗</a> · <a href="https://github.com/br-g/openf1" target="_blank" rel="noreferrer">OpenF1 ↗</a> · <a href="https://github.com/TUMFTM/race-simulation" target="_blank" rel="noreferrer">TUM race-simulation ↗</a>`;
 export function customEntry(){return `<div class="analysis-tabs" aria-label="从精选赛点开始推演"><span class="analysis-location">官方精选</span><button data-view="custom">在策略实验室自定义推演 ↗</button></div>`;}
 export async function prepareCustomAnalysis(input,races){
- const keys=['race','driver','opponent','lap','corner','question'];
+ const keys=['race','driver','opponent','lap','corner'];
  const race=races.find(r=>r.id===input?.race);
- if(!input||Object.keys(input).length!==6||Object.keys(input).some(k=>!keys.includes(k))||!race||typeof input.driver!=='string'||typeof input.opponent!=='string'||!Number.isInteger(input.lap)||input.lap<1||input.lap>race.laps||!Number.isInteger(input.corner)||input.corner<1||input.corner>30||!['attack','defend','wait'].includes(input.question))throw Error('Invalid custom analysis request');
+ if(!input||Object.keys(input).length!==5||Object.keys(input).some(k=>!keys.includes(k))||!race||typeof input.driver!=='string'||typeof input.opponent!=='string'||!Number.isInteger(input.lap)||input.lap<1||input.lap>race.laps||!Number.isInteger(input.corner)||input.corner<1||input.corner>30)throw Error('Invalid custom analysis request');
  let data=cache.get(race.id);if(!data){const response=await fetch(`./data/${race.id}.json`);if(!response.ok)throw Error('Race evidence unavailable');data=await response.json();cache.set(race.id,data);}
- const evidence=analyse(data,input);preferences={driver:input.driver,opponent:input.opponent,lap:input.lap,corner:input.corner,question:input.question};return {evidenceScope:'lap-start; corner not mapped',gapSeconds:evidence.gap,gapIssue:evidence.gapIssue,tyreAges:[evidence.first.age,evidence.second.age],priorLapCounts:[evidence.first.prior.length,evidence.second.prior.length]};
+ const evidence=analyse(data,input);preferences={driver:input.driver,opponent:input.opponent,lap:input.lap,corner:input.corner};return {evidenceScope:'lap-start; corner not mapped',gapSeconds:evidence.gap,gapIssue:evidence.gapIssue,tyreAges:[evidence.first.age,evidence.second.age],priorLapCounts:[evidence.first.prior.length,evidence.second.prior.length]};
 }
 export async function mountCustomAnalysis({race,races,changeRace}) {
  disposePit();const v=++revision;current=race;onRace=changeRace;result=null;request=null;settings=null;
@@ -26,13 +26,12 @@ export async function mountCustomAnalysis({race,races,changeRace}) {
  <label>对手<select id="custom-opponent" disabled><option>载入参赛名单…</option></select></label>
  <label>车手圈数<input id="custom-lap" type="number" min="1" max="${race.laps}" step="1" value="${Math.min(preferences.lap,race.laps)}" required></label>
  <label>目标弯号<input id="custom-corner" type="number" min="1" max="30" step="1" value="${preferences.corner}" required></label>
- </div><div class="query-bottom"><label>想弄懂什么<select id="custom-question"><option value="attack">为什么此时进攻？</option><option value="defend">为什么继续防守？</option><option value="wait">先跟住，会不会更好？</option></select></label><button type="submit" id="custom-submit" class="button primary" disabled>分析这个赛点 <span>↗</span></button></div>
+ </div><div class="query-bottom"><p>综合查看车距、轮胎、节奏与策略取舍。</p><button type="submit" id="custom-submit" class="button primary" disabled>分析赛点 <span>↗</span></button></div>
  <p class="query-scope">圈数以所选车手为准。当前证据定位到起圈时刻；目标弯号尚未与轨迹标定，不会把起圈数据当作弯心数据。</p><p id="custom-status" role="status">正在读取本场公开数据…</p></form>
  <div id="custom-result"></div>`;
  $('#custom-race').addEventListener('change',e=>onRace(e.target.value));
- $('#custom-question').value=preferences.question;
  $('#custom-form').addEventListener('submit',e=>{e.preventDefault();runAnalysis();});
- for(const id of ['custom-driver','custom-opponent','custom-lap','custom-corner','custom-question'])$('#'+id).addEventListener('input',()=>{if(result){$('#custom-result').hidden=true;$('#custom-status').textContent='条件已修改，请重新分析。';}});
+ for(const id of ['custom-driver','custom-opponent','custom-lap','custom-corner'])$('#'+id).addEventListener('input',()=>{if(result){$('#custom-result').hidden=true;$('#custom-status').textContent='条件已修改，请重新分析。';}});
  try{
   let data=cache.get(race.id);
   if(!data){const response=await fetch(`./data/${race.id}.json`);if(!response.ok)throw Error('本场数据暂时无法读取，请重试。');data=await response.json();if(data.schema!==1||!Array.isArray(data.laps))throw Error('本场数据格式暂不支持。');cache.set(race.id,data);}
@@ -44,7 +43,7 @@ export async function mountCustomAnalysis({race,races,changeRace}) {
 }
 function runAnalysis(){
  if(!$('#custom-form').reportValidity())return;
- preferences={driver:$('#custom-driver').value,opponent:$('#custom-opponent').value,lap:Number($('#custom-lap').value),corner:Number($('#custom-corner').value),question:$('#custom-question').value};
+ preferences={driver:$('#custom-driver').value,opponent:$('#custom-opponent').value,lap:Number($('#custom-lap').value),corner:Number($('#custom-corner').value)};
  if(preferences.driver===preferences.opponent){$('#custom-status').textContent='分析车手和对手不能是同一人。';$('#custom-result').hidden=true;return;}
  const data=cache.get(current.id);
  try{request={...preferences};result=analyse(data,request);settings=null;renderResult(data);$('#custom-result').hidden=false;$('#custom-status').textContent=`已读取 ${current.short}站 · ${request.driver} 第 ${request.lap} 圈起点的公开记录。T${request.corner} 攻防仍需轨迹或影像核实。`;}
@@ -64,7 +63,6 @@ function renderResult(data){
  let verdict=!a.current||!b.current?'这组车手在所选时刻无法做双车对比。':number(r.gap)?r.gap>1.5?'先核实：这真的是一场直接缠斗吗？':'两车接近，但“为什么争”还需要下一层证据。':'车距暂不能比较，已有的单车数据仍然可看。';
  let detail=number(r.gap)?`在 ${request.driver} 第 ${request.lap} 圈起点，两车相对领跑者差值估计约为 ${f(r.gap)} 秒。${r.gap>1.5?'这不能支持“正在 T'+request.corner+' 贴身攻防”的前提；也不能排除这一圈稍后发生变化。':'起圈接近值得继续检查，但不能据此确认在 T'+request.corner+' 已经展开攻防。'}`:esc(r.gapIssue?.text||'间隔记录不足，暂不生成双车车距。');
  const utc=new Date(Date.parse(data.session.date_start)+r.time*1000).toISOString().slice(11,23);
- const intent={attack:'此时进攻，值不值得？',defend:'继续防守，代价是什么？',wait:'跟住等待，会不会更划算？'}[request.question];
  $('#custom-result').innerHTML=`<div class="custom-context"><div><span class="eyebrow">${esc(current.short)} / L${request.lap} / T${request.corner}（待定位）</span><h2>${request.driver} <span>×</span> ${request.opponent}</h2></div><span>证据时间：${utc} UTC<br>圈起点，不是 T${request.corner} 弯心</span></div>
  <nav class="lab-result-nav" aria-label="本次推演步骤"><button type="button" data-analysis-target="custom-evidence">01 / 赛点证据</button><button type="button" data-analysis-target="pit-analysis">02 / 进站与轮胎</button><button type="button" data-analysis-target="custom-battle">03 / 进攻或跟车</button></nav>
  <article id="custom-evidence" class="evidence-verdict"><span class="chip ${number(r.gap)&&r.gap<=1.5?'lime':'orange'}">先验证前提</span><h2>${verdict}</h2><p>${detail}</p>${recoveryOptions(data,r)}</article>
@@ -76,7 +74,7 @@ function renderResult(data){
  ${factor('03','之前的比赛节奏',number(r.paceDelta)?'可以比较':number(a.pace)||number(b.pace)?'单车可用':'样本不足',number(r.paceDelta)?`${request.driver} 平均${r.paceDelta>=0?'快':'慢'} ${f(Math.abs(r.paceDelta),2)} 秒 / 圈`:paceFact(a)+paceFact(b),`有效完整圈：${request.driver} ${a.prior.length} 个，${request.opponent} ${b.prior.length} 个；每人至少 2 个才计算平均节奏。排除进出站圈，未校正交通、燃油和旗况。`)}
  ${factor('04','大局目标与未知信息','尚未接入',`计划剩余 ${current.laps-request.lap+1} 圈`,'计划圈数包括当前圈。能量、完整无线电和车队目标尚未接入；这些是分析能力的边界，不是前三项基础数据全部缺失。')}
  </div>
- <div class="custom-two-col"><article class="panel"><div class="panel-title"><h2>决策之前，圈速怎样变化？</h2><span class="chip">真实圈速</span></div>${paceChart(a,b)}<p class="caption">各自最近的有效完整圈，均早于证据时刻。两车的圈号与行驶时间可能不同。</p></article><article class="panel"><span class="eyebrow">WHY / POSSIBLE EXPLANATIONS</span><h2>${intent}</h2>${reasoning(r)}<p class="caption">以上为条件解读，无法证明车手或策略组当时的真实想法。</p></article></div>
+ <div class="custom-two-col"><article class="panel"><div class="panel-title"><h2>决策之前，圈速怎样变化？</h2><span class="chip">真实圈速</span></div>${paceChart(a,b)}<p class="caption">各自最近的有效完整圈，均早于证据时刻。两车的圈号与行驶时间可能不同。</p></article><article class="panel"><span class="eyebrow">WHY / POSSIBLE EXPLANATIONS</span><h2>这个赛点，关键考量是什么？</h2>${reasoning(r)}<p class="caption">以上为条件解读，无法证明车手或策略组当时的真实想法。</p></article></div>
  <details class="analysis-details panel"><summary>查看时间边界、赛会消息与数据出处</summary><p>驾驶决策的解释仅使用起圈时刻及以前的证据。赛后分类另行标注，用于解释为什么不能进行这组数据对比，不被当作车手当时已知的信息，也不用于认定精确退赛时刻。所选 T${request.corner} 尚未与轨迹标定；${request.driver} 第 ${request.lap} 圈完整圈速不会用于解释这一圈开始时的决策。</p><h3>此前 120 秒内的赛会消息</h3>${r.control.length?'<ul>'+r.control.map(c=>`<li>${new Date(Date.parse(data.session.date_start)+c[0]*1000).toISOString().slice(11,19)} UTC · ${esc(c[5])}</li>`).join('')+'</ul>':'<p>没有收录到这一时间窗的消息。无消息不代表可以确认全场绿旗。</p>'}<p>OpenF1 历史数据快照 · 获取于 ${esc(data.retrievedAt.slice(0,10))} · session ${data.session.session_key}。胎龄为轮胎段开始时已跑圈数 + 当前圈号 − 轮胎段起始圈。</p><div class="evidence-links">${data.sources.map(s=>`<a href="${esc(s.url)}" target="_blank" rel="noreferrer">${esc(s.endpoint)} 原始记录 ↗</a>`).join('')}</div><p>1.5 秒仅用于提示“值得核对是否接近”，不是超车规则、DRS 门槛或成功概率。</p></details>
  <section id="custom-battle" class="custom-simulation panel"><div class="panel-title"><div><span class="eyebrow lime">WHAT IF / 由你设定条件</span><h2>现在争，还是先跟住？</h2></div><span class="chip orange">教学模型 · 非赛事预测</span></div><p>将双车关系设为“进攻方在后、目标车在前”。下面全部是你可修改的假设，不自动继承本场遥测，也不证明 T${request.corner} 发生过这次进攻。</p><button class="button primary" id="start-hypothesis">用假设条件比较两种选择 ↗</button><div id="hypothesis-workspace" hidden></div></section>
  <details class="analysis-details panel"><summary>已接入哪些开源能力？还有哪些边界？</summary><div class="reuse-grid"><div><h3>OpenF1 · 已使用</h3><p>本页的参赛名单、圈速、轮胎段、位置和间隔记录来自其公开历史接口。</p></div><div><h3>FastF1 · 下一步定位到弯</h3><p>提供遥测、圈次与赛道信息，可用于距离对齐和弯角窗口分析；本页尚未接入其遥测。</p></div><div><h3>TUM race-simulation · 基础模型与扩展</h3><p>沿用其分胎段成本模型与搜索思路，扩展非线性衰减、假设库存、交通成本和本圈中和进站窗口。未接入完整 VSE、交通或安全车仿真，也不反推弯道意图。</p></div></div><p>${repoLinks}</p><p class="caption">“进站与轮胎推演”使用 TUM 基础思路的扩展模型，参数尚未对本场标定；“现在争，还是先跟住”仍为本项目的独立教学公式。两者不等于真实最优策略。</p></details>`;
@@ -92,7 +90,7 @@ function reasoning(r){
  if(!number(r.gap)||r.gap>1.5)reasons.push(['距离优先于动机','先核实两车是否在这一弯相遇。若尚未接近，“选择缠斗”的问题可能应该改成“为什么追赶或控制差距”。']);
  else reasons.push(['机会窗口','若轨迹证实已接近，出口速度与可用空间可能影响是否立即进攻；起圈间隔只能提出这个假设。']);
  if(r.first.stint&&r.second.stint)reasons.push(['轮胎是条件，不是答案',`两车为 ${compound[r.first.stint[3]]||r.first.stint[3]} / ${compound[r.second.stint[3]]||r.second.stint[3]}，胎龄 ${r.first.age??'?'} / ${r.second.age??'?'} 圈。配方和胎龄可解释潜在节奏差，但无法单独确认磨损或抓地力。`]);
- reasons.push([request.question==='defend'?'防守需要看位置价值':'争夺需要看时间代价',request.question==='defend'?'如果保位能阻止主要对手得分，防守可能有价值；但过度缠斗也可能让后车加入。需要积分目标与后车车距来核实。':'立即进攻可能换来清晰赛道，也可能损失出口、轮胎和时间。等待是否更好，要看机会是否还在、后车压力和剩余比赛长度。']);
+ reasons.push(['进攻、防守、等待，一起比较','进攻可能换来清晰赛道，也可能消耗轮胎和时间；防守能保住位置，但缠斗可能让后车追近；先跟住可以等待机会，也可能错失窗口。判断取舍，还需要后车距离、剩余圈数和车队目标。']);
  return reasons.map(([h,p])=>`<div class="analysis-reason"><h3>${h}</h3><p>${p}</p></div>`).join('');
 }
 function paceChart(a,b){
