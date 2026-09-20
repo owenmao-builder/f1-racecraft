@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import {DRY,scenarioTyres,tyreLapCost,evaluatePlan,comparePitStrategies,strategyContext,sensitivity} from '../dist/race-strategy-engine.js';
-import {buildPitLedger} from '../dist/pit-ledger.js';
+import {buildPitLedger,cumulativeTimingPoints} from '../dist/pit-ledger.js';
 import {analyse} from '../dist/analysis-engine.js';
 import {races} from '../dist/races.js';
 const close=(a,b)=>assert.ok(Math.abs(a-b)<1e-7,`${a} != ${b}`);
@@ -29,6 +29,7 @@ for(let i=0;i<120;i++){
  const stops=[[],[{after:a,compound:DRY[(i+1)%3]}],[{after:a,compound:'MEDIUM'},{after:b,compound:'HARD'}]][i%3];
  const p=evaluatePlan(c,s,stops),r=reference(c,s,stops),l=buildPitLedger(c,s,p);
  close(p.total,r.total);close(p.delta,r.delta);close(l.final.balance,-r.delta);
+ close(l.final.planCost,r.total);close(l.final.noStopCost,r.total-r.delta);
  close(l.final.trafficCost,p.trafficCost);
  if(l.recovery)assert.ok(l.rows.slice(l.recovery.progress).every(row=>row.balance>=-1e-8));
 }
@@ -80,3 +81,17 @@ for(const race of races){
  }
 }
 console.log(`PASS: 120 independent lap-by-lap comparisons; ${historical} historical snapshots; search optimum; one/two/no-stop outcomes; inventory; flags; traffic; sensitivity; invalid inputs.`);
+
+const cumulative=buildPitLedger(context,settings,current.one),pit=current.one.stops[0].after;
+for(let i=2;i<cumulative.rows.length;i++){
+ assert.ok(cumulative.rows[i].noStopLapCost>cumulative.rows[i-1].noStopLapCost,'Old tyres progressively increase lap time');
+ const d1=cumulative.rows[i].noStopLapCost-cumulative.rows[i-1].noStopLapCost;
+ const d0=cumulative.rows[i-1].noStopLapCost-cumulative.rows[i-2].noStopLapCost;
+ if(i>2)assert.ok(d1>=d0-1e-8,'Convex degradation increases the cumulative curve slope');
+}
+assert.ok(cumulative.rows[pit+2].planLapCost<cumulative.rows[pit-1].planLapCost,'After warmup the new tyre reduces slope in this example');
+const curves=cumulativeTimingPoints(cumulative,90);
+assert.ok(curves.noStop.at(-1).seconds>curves.strategy.at(-1).seconds);
+for(let i=0;i<pit;i++)close(cumulative.rows[i].noStopCost,cumulative.rows[i].planCost);
+close(curves.noStop.at(-1).seconds-curves.strategy.at(-1).seconds,20.27605);
+console.log('PASS: Netherlands cumulative chart rises, jumps at L50, runs faster after the stop, and finishes 20.27605 seconds lower.');

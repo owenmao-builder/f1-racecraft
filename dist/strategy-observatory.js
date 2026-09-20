@@ -1,6 +1,6 @@
 import {analyseDriver} from './analysis-engine.js?v=13.0';
 import {scenarioTyres,strategyContext,comparePitStrategies,evaluatePlan,sensitivity} from './race-strategy-engine.js?v=8.4';
-import {mountPitStory} from './pit-story.js?v=14.0';
+import {mountPitStory} from './pit-story.js?v=15.0';
 const names={SOFT:'软胎',MEDIUM:'中性胎',HARD:'硬胎'};
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 

@@ -1,4 +1,4 @@
-import {buildPitLedger} from './pit-ledger.js?v=8.3';
+import {buildPitLedger,cumulativeTimingPoints,STORY_BASE_LAP_SECONDS} from './pit-ledger.js?v=15.0';
 import {tyreLapCost,pitLossAt} from './race-strategy-engine.js?v=8.3';
 const names={SOFT:'软胎',MEDIUM:'中性胎',HARD:'硬胎'};
 const fmt=n=>Math.abs(n)<.005?'0.00':Math.abs(n).toFixed(2);
@@ -15,9 +15,12 @@ export function mountPitStory(host,{context,onChoose}) {
  <div class="story-verdict" aria-live="polite"></div>
  <div class="story-sensitivity"></div>
  <div class="story-steps" role="group" aria-label="换胎策略解说章节">${['旧胎的代价','进站先付款','新胎逐圈追','终点算总账'].map((s,i)=>`<button type="button" data-story-step="${i}" aria-pressed="${i===0}"><b>0${i+1}</b><span>${s}</span></button>`).join('')}</div>
- <div class="story-stage"><div class="story-score"><div><span class="story-at">起点</span><strong class="story-balance">0.00 <small>秒</small></strong></div><span class="story-score-label">相对不再进站<br>尚未花费时间</span></div><div class="story-chart"></div>
+ <div class="story-stage"><div class="story-score"><div><span class="story-at">起点</span><strong class="story-balance">0.00 <small>秒</small></strong></div><span class="story-score-label">相对不再进站<br>尚未花费时间</span></div><div class="story-chart-key"><span class="no-stop">不再换胎</span><span class="with-stop">换胎方案</span><b>同一圈，越低越快</b></div>
+ <div class="story-plot-heading"><h4>累计用时 · 放大策略差异</h4><span>已扣除双方共同基础用时</span></div><div class="story-chart story-cost-chart"></div>
+ <details class="story-total-detail"><summary>查看完整累计总用时</summary><p>为两条线同时加回 90 秒/圈的教学基础圈时；它只改变图形尺度，终点差值不变，不是实际比赛总成绩。</p><div class="story-chart story-total-chart"></div></details>
+ <div class="story-finish" aria-label="终点累计用时对比"></div>
  <div class="story-player"><button type="button" class="story-play">▶ 播放解说</button><label for="story-progress" class="sr-only">时间账本回放圈次</label><input id="story-progress" type="range" min="0" max="${context.remaining}" step="1" value="0"><output class="story-lap">起点</output></div>
- <p class="story-chart-note">上方 = 已省时间 · 下方 = 尚未回本 · 虚线 = 完整方案。比较同一车手的两种换胎选择，曲线显示累计省下的时间。</p></div>
+ <p class="story-chart-note">橙色虚线 = 不再换胎；绿色实线 = 换胎方案。两图都从同一起点累计，终点较低的方案用时更少。主图放大轮胎、进站、升温和交通的累计成本；完整图加回相同的基础用时。两图终点差值一致。主图斜率是每圈额外成本，完整图斜率才是每圈总用时。</p></div>
  <div class="story-radio"><span class="story-radio-icon" aria-hidden="true">↳</span><div><span class="eyebrow">策略师解说 · <span class="story-phase"></span></span><h4 class="story-radio-title"></h4><p class="story-radio-text"></p></div></div>
  <div class="story-receipt" aria-label="终点时间账单"></div>
  <div class="story-takeaway"></div>
@@ -26,34 +29,41 @@ export function mountPitStory(host,{context,onChoose}) {
  function stop(){if(timer!==null)clearInterval(timer);timer=null;q('.story-play').textContent='▶ 播放解说';}
  function draw(){
   if(!ledger||!host.isConnected)return;
-  const box=q('.story-chart'),w=Math.max(220,box.clientWidth),h=238,L=42,R=12,T=28,B=28;
-  const values=ledger.rows.map(r=>r.balance),min=Math.min(-2,...values)*1.12,max=Math.max(2,...values)*1.18;
-  const x=i=>L+(w-L-R)*i/context.remaining,y=v=>T+(h-T-B)*(max-v)/(max-min);
-  const path=rows=>rows.map((r,i)=>(i?'L':'M')+x(r.progress).toFixed(2)+','+y(r.balance).toFixed(2)).join(' ');
-  const row=ledger.rows[progress],ticks=[min,0,max],positive=row.balance>=0;
-  const marks=current.plan.stops.map((s,i)=>`<line x1="${x(s.after)}" x2="${x(s.after)}" y1="${T}" y2="${h-B}" stroke="#a57956" stroke-dasharray="2 5"/><text x="${x(s.after)}" y="15" text-anchor="${x(s.after)>w-60?'end':x(s.after)<80?'start':'middle'}" fill="#e9ab7d">${current.plan.stops.length>1?(i+1)+'停':'进站'} L${context.lap+s.after-1}</text>`).join('');
-  box.innerHTML=`<svg viewBox="0 0 ${w} ${h}" role="img" aria-label="逐圈时间账本：${ledger.final.balance>=0?'终点省时':'终点多用'} ${fmt(ledger.final.balance)} 秒，${ledger.recovery?'L'+ledger.recovery.lap+' 起持续回本':'没有持续回本点'}"><rect x="${L}" y="${T}" width="${w-L-R}" height="${y(0)-T}" fill="#a9d954" fill-opacity=".035"/>${ticks.map(v=>`<line x1="${L}" x2="${w-R}" y1="${y(v)}" y2="${y(v)}" stroke="${v===0?'#7b8c78':'#25332d'}" stroke-dasharray="${v===0?'5 4':'1 0'}"/><text x="${L-8}" y="${y(v)+4}" text-anchor="end" fill="#b1c0b9">${v>0?'+':''}${v.toFixed(0)}</text>`).join('')}${marks}<text x="${w-R}" y="${y(0)-7}" text-anchor="end" fill="#b6c7a2">回本线</text><path d="${path(ledger.rows)}" stroke="#768475" stroke-width="2" stroke-dasharray="4 5" fill="none"/><path d="${path(ledger.rows.slice(0,progress+1))}" stroke="${positive?'#c4ef69':'#f3ac76'}" stroke-width="3" stroke-linejoin="round" fill="none"/><line x1="${x(progress)}" x2="${x(progress)}" y1="${T}" y2="${h-B}" stroke="#a7c8c2" stroke-opacity=".3"/><circle cx="${x(progress)}" cy="${y(row.balance)}" r="5" stroke="#0e1814" stroke-width="2" fill="${positive?'#c4ef69':'#f3ac76'}"/>${ledger.recovery?`<circle cx="${x(ledger.recovery.progress)}" cy="${y(ledger.recovery.balance)}" r="4" fill="none" stroke="#c4ef69" stroke-width="2"><title>L${ledger.recovery.lap} 起持续回本</title></circle>`:''}<text x="${L}" y="${h-5}" fill="#9dacaa">L${context.lap} 起点</text><text x="${w-R}" y="${h-5}" text-anchor="end" fill="#9dacaa">L${context.lap+context.remaining-1} 终点</text></svg>`;
+  const n=context.remaining,orange='#f0ae7d',green='#c4ef69';
+  for(const [selector,base,h] of [['.story-total-chart',STORY_BASE_LAP_SECONDS,220],['.story-cost-chart',0,300]]){
+   const box=q(selector);if(!box.clientWidth)continue;
+   const w=Math.max(220,box.clientWidth),L=46,R=18,T=40,B=31;
+   const points=cumulativeTimingPoints(ledger,base);
+   const max=Math.max(1,points.noStop.at(-1).seconds,points.strategy.at(-1).seconds)*1.12;
+   const x=i=>L+(w-L-R)*i/n,y=v=>h-B-(h-T-B)*v/max;
+   const path=rows=>rows.map((r,i)=>(i?'L':'M')+x(r.progress).toFixed(2)+','+y(r.seconds).toFixed(2)).join(' ');
+   const marks=current.plan.stops.map((s,i)=>`<line x1="${x(s.after)}" x2="${x(s.after)}" y1="${T}" y2="${h-B}" stroke="#66806a" stroke-dasharray="2 5"/><text x="${x(s.after)}" y="${base?T+12:18}" text-anchor="${x(s.after)>w-65?'end':x(s.after)<85?'start':'middle'}" fill="#c4d7af">${current.plan.stops.length>1?(i+1)+'停':'进站'} L${context.lap+s.after-1}</text>`).join('');
+   const row=ledger.rows[progress],baseValue=base*progress+row.noStopCost,planValue=base*progress+row.planCost;
+   const recovery=!base&&ledger.recovery?`<circle cx="${x(ledger.recovery.progress)}" cy="${y(ledger.recovery.planCost)}" r="5" fill="#0e1814" stroke="${green}" stroke-width="2"><title>L${ledger.recovery.lap} 起持续更省时</title></circle>`:'';
+   const final=ledger.final,summary=`${final.balance>=0?'换胎终点少用':'换胎终点多用'} ${fmt(final.balance)} 秒`;
+   box.innerHTML=`<svg viewBox="0 0 ${w} ${h}" role="img" aria-label="${base?'累计总用时示意':'累计轮胎与进站成本放大图'}：${summary}，越低越快"><text x="${L}" y="${base?16:32}" fill="#a8bba4">${base?'总用时 / 分钟':'累计成本 / 秒'}</text>${[0,1/3,2/3,1].map(t=>{const v=max*t;return `<line x1="${L}" x2="${w-R}" y1="${y(v)}" y2="${y(v)}" stroke="#28372d"/><text x="${L-8}" y="${y(v)+4}" text-anchor="end" fill="#a8bba4">${base?(v/60).toFixed(1):v.toFixed(0)}</text>`;}).join('')}${marks}<path class="story-no-stop-line" d="${path(points.noStop)}" stroke="${orange}" stroke-width="2.5" stroke-dasharray="6 5" fill="none"/><path class="story-plan-line" d="${path(points.strategy)}" stroke="${green}" stroke-width="3" stroke-linejoin="round" fill="none"/>${recovery}<line x1="${x(progress)}" x2="${x(progress)}" y1="${T}" y2="${h-B}" stroke="#a7c8c2" stroke-opacity=".5"/><circle cx="${x(progress)}" cy="${y(baseValue)}" r="4" stroke="#0e1814" stroke-width="2" fill="${orange}"/><circle cx="${x(progress)}" cy="${y(planValue)}" r="4" stroke="#0e1814" stroke-width="2" fill="${green}"/><circle class="story-no-stop-end" cx="${x(n)}" cy="${y(points.noStop.at(-1).seconds)}" r="3" fill="${orange}"/><circle class="story-plan-end" cx="${x(n)}" cy="${y(points.strategy.at(-1).seconds)}" r="3" fill="${green}"/><text x="${L}" y="${h-7}" fill="#9dacaa">L${context.lap} 起点</text><text x="${w-R}" y="${h-7}" text-anchor="end" fill="#9dacaa">L${context.lap+n-1} 终点</text></svg>`;
+  }
  }
  function narration(){
   const {plan,settings}=current,row=ledger.rows[progress],stops=plan.stops;
   if(!plan.compatible)return ['先确认，这个方案能不能执行。',`当前方案${plan.reasons.join('、')}。即使账面更快，也不会进入推荐；先修改配方或核实可用胎组。`];
-  if(!stops.length)return ['留在赛道，是比较的起点。','这条线始终为零，因为我们正在把“不再进站”和它自己比较。换一种方案，就能看到进站先亏多少、新胎后来追回多少。'];
+  if(!stops.length)return ['留在赛道，是比较的起点。','当前选择就是不再进站，所以两条累计用时曲线完全重合、一起上升。换一种方案，就能看到进站时的跳升，以及之后能否追平。'];
   if(phase===3&&current.referenceCaution){
    const alt=current.alternative,diff=alt?alt.plan.total-plan.total:0;
    return ['看可行方案之间的差距。',alt?`同一组假设下，这套方案比${alt.label}${diff>=0?'快':'慢'} ${fmt(diff)} 秒。时间账本中的更大差值，是相对“把旧胎硬撑到终点”的理论外推，不能理解为比赛中实际能赚到这些秒数。`:'当前缺少另一种可行方案。相对旧胎硬撑到终点的秒数仅为理论外推，不能当作实际比赛收益。'];
   }
   if(phase===0){
    const wear=tyreLapCost(context.compound,context.age+context.remaining-1,settings)-tyreLapCost(context.compound,context.age,settings);
-   return ['不进站，也有旧胎的代价。',`现在是 ${names[context.compound]}，已跑 ${context.age} 圈。按当前假设的衰减，如果一直用到终点，最后一圈的轮胎时间代价${wear>0?'会比当前圈多 '+fmt(wear)+' 秒':'与当前圈相同'}。换胎值不值，要把后面每一圈的差值加起来看。`];
+   return ['不进站，也有旧胎的代价。',`现在是 ${names[context.compound]}，已跑 ${context.age} 圈。按当前假设的衰减，如果一直用到终点，最后一圈的轮胎时间代价${wear>0?'会比当前圈多 '+fmt(wear)+' 秒':'与当前圈相同'}。固定基础圈时、只考虑轮胎衰减时，旧胎越来越慢，累计用时就越来越陡。主图扣除了两方案相同的基础用时，让这个变化更容易看清。`];
   }
   if(phase===1){
    const n=stops.findIndex(s=>s.after===progress),next=stops[Math.max(0,n)];
    const loss=pitLossAt(settings,next.after);
-   return [`BOX, BOX！先付 ${fmt(loss)} 秒。`,`L${context.lap+next.after-1} 圈末换${names[next.compound]}。${next.after===1&&settings.flag!=='green'?'本圈采用你设的中和进站窗口。':''}进出维修区与停车共损失 ${fmt(loss)} 秒；下一圈再计 ${fmt(settings.warmup)} 秒升温与 ${fmt(settings.trafficLoss)} 秒假设交通成本。新胎得先把这笔账追回来。`];
+   return [`BOX, BOX！先付 ${fmt(loss)} 秒。`,`L${context.lap+next.after-1} 圈末换${names[next.compound]}。${next.after===1&&settings.flag!=='green'?'本圈采用你设的中和进站窗口。':''}进出维修区与停车共损失 ${fmt(loss)} 秒；下一圈再计 ${fmt(settings.warmup)} 秒升温与 ${fmt(settings.trafficLoss)} 秒假设交通成本。图上同一圈的竖直跳升，就是这笔一次性成本；之后曲线继续上升，但新胎较快时，斜率会变小。`];
   }
   if(phase===2)return [row.lapGain>=0?'把时间，一圈一圈拿回来。':'新胎也不是每圈都更快。',`L${row.lap}：仅看轮胎，这圈比继续用原胎${row.lapGain>=0?'快':'慢'} ${fmt(row.lapGain)} 秒${row.cold+row.traffic>0?`，还需支付 ${fmt(row.cold+row.traffic)} 秒升温与交通成本`:''}。累计轮胎${row.tyreSavings>=0?'收益':'损失'} ${fmt(row.tyreSavings)} 秒，扣掉已付成本后，${row.balance<0?'还差 '+fmt(row.balance)+' 秒才回本':'已净省 '+fmt(row.balance)+' 秒'}。`];
-  if(ledger.final.balance>.005)return ['这次赚到了，但优势有多稳？',`轮胎共赚 ${fmt(ledger.final.tyreSavings)} 秒，支付进站 ${fmt(plan.pitCost)} 秒、升温 ${fmt(plan.coldCost)} 秒、交通 ${fmt(plan.trafficCost)} 秒，最终净省 ${fmt(ledger.final.balance)} 秒。${ledger.recovery?'从 L'+ledger.recovery.lap+' 起持续回本。':''}收益来自剩余每一圈的累积，不是只看出站那一圈。`];
-  if(ledger.final.balance<-.005)return ['算到终点，这笔投资没回本。',`轮胎带来${ledger.final.tyreSavings>=0?'收益':'损失'} ${fmt(ledger.final.tyreSavings)} 秒，进站、升温与交通还要付 ${fmt(plan.pitCost+plan.coldCost+plan.trafficCost)} 秒，合计反而多用 ${fmt(ledger.final.balance)} 秒。这个模型下，不能只因为“换了新胎”就说策略更好。`];
+  if(ledger.final.balance>.005)return ['这次赚到了，但优势有多稳？',`轮胎共赚 ${fmt(ledger.final.tyreSavings)} 秒，支付进站 ${fmt(plan.pitCost)} 秒、升温 ${fmt(plan.coldCost)} 秒、交通 ${fmt(plan.trafficCost)} 秒，最终净省 ${fmt(ledger.final.balance)} 秒。${ledger.recovery?'从 L'+ledger.recovery.lap+' 起持续回本。':''}绿色换胎曲线最终低于橙色不换胎曲线，这个高度差就是省下的总时间。`];
+  if(ledger.final.balance<-.005)return ['算到终点，这笔投资没回本。',`轮胎带来${ledger.final.tyreSavings>=0?'收益':'损失'} ${fmt(ledger.final.tyreSavings)} 秒，进站、升温与交通还要付 ${fmt(plan.pitCost+plan.coldCost+plan.trafficCost)} 秒，合计反而多用 ${fmt(ledger.final.balance)} 秒。所以绿色换胎曲线在终点仍然更高。即使时机已优化，也不保证轮胎收益一定覆盖进站成本。`];
   return ['到终点，刚好打平。','轮胎收益恰好抵消进站、升温与交通成本，没有留下净时间优势。还需要额外证据，才有理由把它当成更好的选择。'];
  }
  function paint(nextPhase){
@@ -74,6 +84,8 @@ export function mountPitStory(host,{context,onChoose}) {
   stop();current={plan,settings,now,alternative,referenceCaution};ledger=buildPitLedger(context,settings,plan);progress=0;
   q('#story-plan').innerHTML=rows.filter(r=>r[2]).map(([key,label,p])=>`<option value="${key}" ${key===chosen?'selected':''}>${esc(label)}${p.stops.length?' · '+p.stops.map(s=>'L'+(context.lap+s.after-1)+' '+names[s.compound]).join(' / '):''}${!p.compatible?' · 仅时间参照':''}</option>`).join('');
   const f=ledger.final,stops=plan.stops,profitable=f.balance>.005;
+  const total=value=>{const t=(context.remaining*STORY_BASE_LAP_SECONDS+value).toFixed(2).split('.');return `${Math.floor(Number(t[0])/60)}:${String(Number(t[0])%60).padStart(2,'0')}.${t[1]}`;};
+  q('.story-finish').innerHTML=`<div><span>不再换胎 · 累计用时示意</span><strong class="no-stop">${total(f.noStopCost)}</strong><small>其中策略成本 ${f.noStopCost.toFixed(2)} 秒</small></div><div><span>${stops.length?'换胎方案':'同一不换胎方案'} · 累计用时示意</span><strong class="with-stop">${total(f.planCost)}</strong><small>其中策略成本 ${f.planCost.toFixed(2)} 秒</small></div><p><b>${Math.abs(f.balance)<.005?'终点用时相同':`换胎${profitable?'少用':'多用'} ${fmt(f.balance)} 秒`}</b><span>${ledger.recovery?'从 L'+ledger.recovery.lap+' 起持续更省时':stops.length?'本方案到终点未形成持续优势':'当前两条曲线重合'} · 总用时为教学示意</span></p>`;
   q('.story-reference-note').textContent=referenceCaution;
   q('.story-reference-note').hidden=!referenceCaution;
   const difference=alternative?alternative.plan.total-plan.total:0;
@@ -87,6 +99,7 @@ export function mountPitStory(host,{context,onChoose}) {
   q('.story-takeaway').innerHTML=`${timing}<p><b>${profitable?'什么会让它不再划算？':'策略师还要看什么？'}</b>${profitable?`净优势是 ${fmt(f.balance)} 秒。若相对参照再多出超过这个数的未计损失，优势就会消失；也要检查上方耗胎敏感性。`:'交通按假设损失计入；实际出站位置、对手应对和未来旗况没有仿真，不能据此还原策略组的真实判断。'}</p>${!plan.compatible||!baseline.compatible?`<p class="story-constraint">${!plan.compatible?'所选方案：'+esc(plan.reasons.join('、')):'不再进站的比较基准未满足两配方假设'}；以上仅作时间对照，不参与推荐。</p>`:''}`;
   paint(0);
  }
+ q('.story-total-detail').addEventListener('toggle',draw);
  q('#story-plan').addEventListener('change',e=>onChoose(e.target.value));
  q('#story-progress').addEventListener('input',e=>{if(!ledger)return;stop();progress=Number(e.target.value);paint();});
  host.querySelectorAll('[data-story-step]').forEach(b=>b.addEventListener('click',()=>{

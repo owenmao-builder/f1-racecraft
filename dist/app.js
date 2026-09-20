@@ -1,5 +1,5 @@
 import { mountPitResearch, pitResearchSelection } from './pit-research.js?v=13.0';
-import { mountObservatory } from './strategy-observatory.js?v=14.0';
+import { mountObservatory } from './strategy-observatory.js?v=15.0';
 import { mountScene } from './scene.js';
 import { races, calendarSource } from './races.js';
 const $=(s,r=document)=>r.querySelector(s);
