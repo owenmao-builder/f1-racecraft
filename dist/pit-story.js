@@ -17,7 +17,7 @@ export function mountPitStory(host,{context,onChoose}) {
  <div class="story-steps" role="group" aria-label="换胎策略解说章节">${['旧胎的代价','进站先付款','新胎逐圈追','终点算总账'].map((s,i)=>`<button type="button" data-story-step="${i}" aria-pressed="${i===0}"><b>0${i+1}</b><span>${s}</span></button>`).join('')}</div>
  <div class="story-stage"><div class="story-score"><div><span class="story-at">起点</span><strong class="story-balance">0.00 <small>秒</small></strong></div><span class="story-score-label">相对不再进站<br>尚未花费时间</span></div><div class="story-chart"></div>
  <div class="story-player"><button type="button" class="story-play">▶ 播放解说</button><label for="story-progress" class="sr-only">时间账本回放圈次</label><input id="story-progress" type="range" min="0" max="${context.remaining}" step="1" value="0"><output class="story-lap">起点</output></div>
- <p class="story-chart-note">上方 = 已省时间 · 下方 = 尚未回本 · 虚线 = 完整方案。比较同一车手的两种选择，不是两辆车的实时差距。</p></div>
+ <p class="story-chart-note">上方 = 已省时间 · 下方 = 尚未回本 · 虚线 = 完整方案。比较同一车手的两种换胎选择，曲线显示累计省下的时间。</p></div>
  <div class="story-radio"><span class="story-radio-icon" aria-hidden="true">↳</span><div><span class="eyebrow">策略师解说 · <span class="story-phase"></span></span><h4 class="story-radio-title"></h4><p class="story-radio-text"></p></div></div>
  <div class="story-receipt" aria-label="终点时间账单"></div>
  <div class="story-takeaway"></div>

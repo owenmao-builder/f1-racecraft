@@ -5,7 +5,7 @@
 
 /* The same selected case is readable in the observatory and editable in the institute. */
 #strategy-custom[data-mode="observe"] .research-only,#strategy-custom[data-mode="research"] .observe-only{display:none!important}
-#observe-guide{margin-top:28px;scroll-margin-top:24px}
+#observe-guide{margin-top:0;scroll-margin-top:24px}
 #custom-battle .body-copy{margin:14px 0 20px}
 #custom-battle .observe-only>.button{margin-top:16px;white-space:normal}
 
@@ -13,3 +13,6 @@
 #research-analysis input:focus-visible,#research-analysis select:focus-visible{outline:2px solid var(--lime);outline-offset:2px}
 #research-status{font-size:14px;line-height:1.7;color:#c4d2dd}
 @media(max-width:640px){.research-query-grid{grid-template-columns:1fr;gap:14px}}
+
+#observe-status{font-size:14px;line-height:1.7;color:#c4d2dd}
+#observe-form input:focus-visible,#observe-form select:focus-visible{outline:2px solid var(--lime);outline-offset:2px}
