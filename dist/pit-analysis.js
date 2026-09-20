@@ -1,10 +1,10 @@
 import {DRY,SCENARIOS,scenarioTyres,strategyContext,comparePitStrategies,evaluatePlan,sensitivity} from './race-strategy-engine.js?v=8.4';
-import {mountPitStory} from './pit-story.js?v=8.4';
+import {mountPitStory} from './pit-story.js?v=12.0';
 const names={SOFT:'软胎',MEDIUM:'中性胎',HARD:'硬胎'},short={SOFT:'S',MEDIUM:'M',HARD:'H'};
 const signed=n=>(n>=0?'+':'−')+Math.abs(n).toFixed(2);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const source='https://github.com/TUMFTM/race-simulation/tree/96ef2c2021982217be008fe458df47c1a72da071';
-export function mountPitAnalysis(host,{data,evidence,race}){
+export function mountPitAnalysis(host,{data,evidence,race,showStory=true}){
  const context=strategyContext(data,evidence,race);
  host.innerHTML=`<div class="panel-title"><div><span class="eyebrow lime">RACE STRATEGY / 进站与轮胎推演</span><h2>把两种选择，都算到终点。</h2></div><span class="chip orange">非线性条件模型</span></div>`;
  if(context.error){host.insertAdjacentHTML('beforeend',`<p class="pit-empty">${context.error}</p>`);return;}
@@ -17,8 +17,8 @@ export function mountPitAnalysis(host,{data,evidence,race}){
  <div class="pit-formula"><span>核心判断</span><strong>换胎净收益 = 未来逐圈轮胎收益 − 进站 − 升温 − 交通</strong><p>大于零才省时。轮胎越旧，后期损失可以加速；新胎也会继续变旧。所有方案都算到同一个终点。</p></div>
  <div class="pit-mode-controls pit-controls"><label>耗胎情景<select id="pit-scenario">${Object.entries(SCENARIOS).map(([key,v])=>`<option value="${key}" ${key==='normal'?'selected':''}>${v.label} · 假设参数</option>`).join('')}<option value="custom" disabled>自定义系数</option></select></label><label>下次换哪种胎<select id="pit-target"><option value="AUTO">自动比较软 / 中 / 硬</option>${DRY.map(c=>`<option value="${c}">${names[c]}</option>`).join('')}</select></label></div>
  <p class="pit-assumption">胎龄来自历史记录；性能参数是可调工程情景，未对本场 2026 轮胎标定。低 / 中 / 高耗胎并不自动代表某条赛道。</p>
- <section class="pit-story" aria-label="换胎策略互动解说"></section>
- <div class="pit-tune-heading"><span class="eyebrow lime">YOUR PIT WALL / 轮到你做策略师</span><h3>改一个条件，看看结论会不会翻转。</h3><p>试着增加进站损失，或改变轮胎衰减。上方时间账本和下方方案会一起重算。</p></div>
+ ${showStory?'<section class="pit-story" aria-label="换胎策略互动解说"></section>':''}
+ <div class="pit-tune-heading"><span class="eyebrow lime">YOUR PIT WALL / 轮到你做策略师</span><h3>改一个条件，看看结论会不会翻转。</h3><p>试着增加进站损失，或改变轮胎衰减。图表和方案会一起重算。</p></div>
  <div class="pit-layout"><div class="pit-controls">
  <label for="pit-delay"><span>再等几圈 <output id="pit-delay-value">${s.delay} 圈</output></span><input id="pit-delay" type="range" min="0" max="${context.remaining-2}" step="1" value="${s.delay}"></label>
  <label for="pit-loss"><span>绿旗进站总损失 <output id="pit-loss-value">21.5 秒</output></span><input id="pit-loss" type="range" min="5" max="40" step=".5" value="21.5"></label>
@@ -43,7 +43,7 @@ export function mountPitAnalysis(host,{data,evidence,race}){
  <div class="pit-legend"><span class="pit-compound SOFT">S 软胎</span><span class="pit-compound MEDIUM">M 中性胎</span><span class="pit-compound HARD">H 硬胎</span><span>各段标注使用圈数</span></div>
  <div id="pit-plans"></div><div id="pit-breakdown" aria-live="polite"></div>
  <details class="analysis-details"><summary>完整公式、公开依据与能力边界</summary><p>每圈：tᵢ = Bᵢ + D配方(aᵢ) + Wᵢ + Qᵢ。方案总耗时：T = Σtᵢ + ΣPⱼ。换胎收益：G = T不再进站 − T换胎方案。G 大于零说明有时间收益；P 是进站损失，W 是升温损失，Q 是假设交通损失。一次换胎把下一圈胎龄归零，后续继续逐圈老化。</p><p>两种选择共同的基础圈速、燃油变轻与赛道演化项 Bᵢ 抵消；不直接用未经燃油、交通和旗况校正的历史圈速拟合轮胎。默认系数是本项目工程假设，不是 Pirelli 或车队数据，也没有完成真实赛事回测。</p><p>沿用 <a href="${source}" target="_blank" rel="noreferrer">TUM race-simulation</a> 的分胎段求和与方案搜索思路；TUM 本身支持二次衰减。当前版本新增后期拐点项、假设库存、交通成本与本圈中和进站窗口，不能称为上游完整仿真器。原线性移植与对照测试仍保留。</p><p><a href="https://press.pirelli.com/tyre-compounds-selected-for-zandvoort-monza-and-madrid/" target="_blank" rel="noreferrer">Pirelli 2026 配方与策略说明</a>展示了赛道负荷、温度和维修区损失如何影响一停、两停取舍；<a href="https://www.formula1.com/en/latest/article/undercut-vs-overcut-why-tyre-strategy-was-so-finely-poised-in-monaco-and-why.1YYMDkEBnFols8bDWtSXiz.1YYMDkEBnFols8bDWtSXiz" target="_blank" rel="noreferrer">F1 官方策略解读</a>说明新胎升温与交通会改变提前进站的收益。这些资料支持模型中的因素，不提供这里的数值系数。</p><p>自动模式同时搜索下一套软 / 中 / 硬胎；手动模式固定下一套配方。两停的第二套始终搜索三种干胎。推荐只限未来零、一、两停及所设库存；不含三停、对手应对、位置变化或精确弯角走线。敏感性范围将所有衰减项同时上下调整 25%，固定同一方案重算，既不是置信区间，也不是胜率。</p><p><a href="./race-strategy-engine.js" target="_blank" rel="noreferrer">当前模型源码 ↗</a> · <a href="./licenses/tum-NOTICE.txt" target="_blank" rel="noreferrer">修改说明与 LGPL-3.0 许可 ↗</a></p></details>`);
- const story=mountPitStory(q('.pit-story'),{context,onChoose:key=>{chosen=key;render();}});
+ const story=showStory?mountPitStory(q('.pit-story'),{context,onChoose:key=>{chosen=key;render();}}):{update(){},clear(){},dispose(){}};
  function update(){
   const inputs=[...host.querySelectorAll('.pit-controls input[type=number]:not(:disabled)')];
   if(inputs.some(el=>el.value===''||!el.validity.valid)){computed=null;story.clear();q('#pit-headline').textContent='请填写有效的非负参数，图表暂停更新。';q('#pit-window-chart').innerHTML='';q('#pit-plans').innerHTML='';q('#pit-breakdown').innerHTML='';return;}
@@ -60,7 +60,7 @@ export function mountPitAnalysis(host,{data,evidence,race}){
   const eligible=rows.filter(r=>r[2]?.compatible),best=eligible.reduce((r,x)=>!r||x[2].total<r[2].total-1e-8?x:r,null);
   const key=chosen==='auto'?(best?.[0]??'baseline'):chosen;
   let selected=rows.find(r=>r[0]===key)?.[2];if(!selected){chosen='auto';render();return;}
-  q('.pit-story').hidden=false;
+  if(showStory)q('.pit-story').hidden=false;
   const immediate=selected.stops.length===1?evaluatePlan(context,s,[{after:1,compound:selected.stops[0].compound}]):computed.now;
   const alternatives=rows.filter(r=>['baseline','one','two'].includes(r[0])&&r[2]?.compatible&&JSON.stringify(r[2].stops)!==JSON.stringify(selected.stops)).sort((a,b)=>a[2].total-b[2].total);
   const alt=alternatives[0],alternative=alt?{plan:alt[2],label:alt[1]+(alt[2].stops.length?' / '+alt[2].stops.map(stop=>'L'+(context.lap+stop.after-1)+' '+names[stop.compound]).join(' → '):'')}:null;

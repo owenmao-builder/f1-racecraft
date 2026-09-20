@@ -44,7 +44,7 @@ export function mountPitStory(host,{context,onChoose}) {
   }
   if(phase===0){
    const wear=tyreLapCost(context.compound,context.age+context.remaining-1,settings)-tyreLapCost(context.compound,context.age,settings);
-   return ['不进站，也有旧胎的代价。',`现在是 ${names[context.compound]}，已跑 ${context.age} 圈。按你设的衰减，如果一直用到终点，最后一圈的轮胎时间代价${wear>0?'会比当前圈多 '+fmt(wear)+' 秒':'与当前圈相同'}。换胎值不值，要把后面每一圈的差值加起来看。`];
+   return ['不进站，也有旧胎的代价。',`现在是 ${names[context.compound]}，已跑 ${context.age} 圈。按当前假设的衰减，如果一直用到终点，最后一圈的轮胎时间代价${wear>0?'会比当前圈多 '+fmt(wear)+' 秒':'与当前圈相同'}。换胎值不值，要把后面每一圈的差值加起来看。`];
   }
   if(phase===1){
    const n=stops.findIndex(s=>s.after===progress),next=stops[Math.max(0,n)];
