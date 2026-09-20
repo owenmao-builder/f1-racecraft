@@ -1,4 +1,4 @@
-import {analyse} from './analysis-engine.js';
+import {analyse} from './analysis-engine.js?v=13.0';
 import {scenarioTyres,strategyContext,comparePitStrategies,evaluatePlan,sensitivity} from './race-strategy-engine.js?v=8.4';
 import {mountPitStory} from './pit-story.js?v=12.0';
 const names={SOFT:'软胎',MEDIUM:'中性胎',HARD:'硬胎'};

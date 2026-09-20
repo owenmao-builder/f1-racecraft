@@ -8,3 +8,8 @@
 #observe-guide{margin-top:28px;scroll-margin-top:24px}
 #custom-battle .body-copy{margin:14px 0 20px}
 #custom-battle .observe-only>.button{margin-top:16px;white-space:normal}
+
+.research-query-grid{display:grid;grid-template-columns:1.2fr 1.4fr .7fr;gap:16px}
+#research-analysis input:focus-visible,#research-analysis select:focus-visible{outline:2px solid var(--lime);outline-offset:2px}
+#research-status{font-size:14px;line-height:1.7;color:#c4d2dd}
+@media(max-width:640px){.research-query-grid{grid-template-columns:1fr;gap:14px}}
