@@ -1,7 +1,7 @@
-import { mountObservatory } from './strategy-observatory.js?v=12.0';
+import { mountObservatory } from './strategy-observatory.js?v=12.1';
 import { mountScene } from './scene.js';
 import { races, calendarSource } from './races.js';
-import { mountCustomAnalysis, customEntry, prepareCustomAnalysis, customSelection } from './analysis.js?v=12.0';
+import { mountCustomAnalysis, customEntry, prepareCustomAnalysis, customSelection, setCustomAnalysisMode } from './analysis.js?v=12.1';
 const $=(s,r=document)=>r.querySelector(s);
 const $$=(s,r=document)=>[...r.querySelectorAll(s)];
 const icon=n=>`<i data-lucide="${n}"></i>`;
@@ -36,23 +36,32 @@ function updateStrategy(){const values=simulate();$('#deg-value').textContent=st
 function render3d(){if($('#page-3d').childElementCount)return;$('#page-3d').innerHTML=heading('BATTLE IN THREE DIMENSIONS','贴近赛车，看清每一次攻防。','拖动观察角度，放慢时间，看见双车位置如何变化。')+`<div class="scene-shell" id="battle-scene"><div class="scene-header"><strong>DOUBLE-CAR BATTLE / 双车攻防</strong><span class="chip orange">通用模型 · 非赛事轨迹</span></div><div class="scene-stage" id="scene-stage"><div class="scene-loading" id="scene-loading"><img src="./assets/f1-two-cars-side.png" alt="双车侧视模型预览"><span>正在载入双车三维模型…</span></div><div class="scene-driver" id="car-a-label" hidden>A / 进攻方</div><div class="scene-driver b" id="car-b-label" hidden>B / 防守方</div></div><div class="scene-controls"><div class="segmented" aria-label="观看角度"><button data-camera="front" class="active" disabled>侧前方</button><button data-camera="side" disabled>纯侧面</button><button data-camera="rear" disabled>侧后方</button></div><div class="segmented" aria-label="攻防阶段"><button data-progress="12" disabled>01 接近</button><button data-progress="50" disabled>02 并排</button><button data-progress="88" disabled>03 前出</button></div></div><div class="scene-transport"><button id="scene-play" class="button primary" disabled>播放回合</button><div class="scene-playbar"><label class="range-label" for="scene-progress"><span>攻防进度</span><span id="scene-phase">接近</span></label><input id="scene-progress" type="range" class="range" min="0" max="100" value="12" aria-label="攻防进度" disabled></div><select id="scene-speed" class="select" aria-label="播放速度" disabled><option value="0.25">0.25× · 逐步观察</option><option value="0.5" selected>0.5× · 慢镜头</option><option value="1">1× · 正常演示</option></select></div><div class="scene-readout"><span>拖动旋转 · 滚动缩放 · 保持贴近地面的视角</span><span>CONCEPT CARS / ILLUSTRATIVE MOTION</span></div></div><div class="moment-grid section-space"><div class="track-note"><span class="chip orange">01 / 接近</span><h3>看到追赶的过程</h3><p>进攻方从落后逐步接近。模型展示相对位置，不把移动速度当作真实遥测。</p></div><div class="track-note"><span class="chip lime">02 / 并排</span><h3>注意车头与后轴的位置</h3><p>侧视能更直观地理解并排程度。是否享有弯角空间，还需结合适用规则与具体情境。</p></div><div class="track-note"><span class="chip blue">03 / 前出</span><h3>向下一段攻防延伸</h3><p>这一版演示基础位置变化。真实弯道走线、制动点和轨迹校准是后续的数据接入目标。</p></div></div><p class="caption">这段三维动画是可旋转的真实模型渲染，运动为教学示意；不声称还原所选赛事的真实赛道或车手精确轨迹。</p>`;}
 function renderSaved(){$('#page-saved').innerHTML=heading('YOUR RACE NOTES','值得再看一次的瞬间。','收藏你想在复盘与讨论中继续研究的赛点。')+(bookmarks.length?`<div class="moment-grid">${cards(allMoments.filter(m=>bookmarks.includes(m.id)).map(m=>({...m,phase:races.find(r=>r.id===m.race).short+' · '+m.phase})))}</div><p class="caption">进入赛点，点击右上角书签即可取消收藏。收藏保存在当前浏览器。</p>`:`<div class="empty-state">${icon('bookmark')}<h2>给精彩留一个位置。</h2><p>在赛点分析中点击书签，就能把这个瞬间留在这里。</p><button class="button primary" data-view="moments">去发现第一个赛点${icon('arrow-up-right')}</button></div>`);}
 function caseHeading(kicker,title,subtitle='',right=''){return heading(kicker,title,subtitle,right).replace('<h1>','<h2 class="lab-case-title">').replace('</h1>','</h2>');}
+function renderObserveGuide(){
+ const host=$('#observe-guide'),selection=customSelection();
+ if(!host)return;
+ if(!selection||selection.race!==state.race){disposeObserve();observeKey='';host.innerHTML='';host.hidden=true;return;}
+ if(state.view!=='strategy-observe')return;
+ host.hidden=false;
+ const key=JSON.stringify(selection);
+ if(observeKey===key)return;
+ disposeObserve();observeKey=key;
+ const race=currentRace();
+ disposeObserve=mountObservatory(host,{race,selection,moment:race.highlight||moments.find(m=>m.id==='vsc'),research:()=>navigate('strategy-research')});
+}
 function renderStrategy(){
  const observe=state.view==='strategy-observe',race=currentRace();
- if(!$('#strategy-observe'))$('#page-strategy').innerHTML=`<div id="strategy-heading"></div><section id="strategy-observe" aria-label="策略观察室"></section><section id="strategy-research" aria-label="策略研究院" hidden><div id="strategy-custom"></div><details id="strategy-legacy" class="analysis-details panel"><summary>更多实验：精选赛事与 VSC 进站窗口</summary><section id="strategy-cases" aria-label="精选策略实验"></section></details></section>`;
- $('#strategy-heading').innerHTML=heading(observe?'STRATEGY OBSERVATORY / 跟着看懂':'STRATEGY INSTITUTE / 由你决策',names[state.view],observe?'以专业策略师的视角，带你掌握 F1 策略的 Know-how。':'自己当策略师，这一次你会怎么做？',`<button class="text-button" data-view="${observe?'strategy-research':'strategy-observe'}">${observe?'去研究院亲自试':'回观察室学思路'}${icon('arrow-up-right')}</button>`);
+ if(!$('#strategy-observe'))$('#page-strategy').innerHTML=`<div id="strategy-heading"></div><section id="strategy-observe" aria-label="策略观察室"><div id="observe-analysis"></div><div id="observe-guide" hidden></div></section><section id="strategy-research" aria-label="策略研究院" hidden><div id="research-analysis"><div id="strategy-custom"></div></div><details id="strategy-legacy" class="analysis-details panel"><summary>更多实验：精选赛事与 VSC 进站窗口</summary><section id="strategy-cases" aria-label="精选策略实验"></section></details></section>`;
+ $('#strategy-heading').innerHTML=heading(observe?'STRATEGY OBSERVATORY / 跟着看懂':'STRATEGY INSTITUTE / 由你决策',names[state.view],observe?'以专业策略师的视角，从你选择的赛点出发，带你掌握 F1 策略的 Know-how。':'自己当策略师，这一次你会怎么做？',`<button class="text-button" data-view="${observe?'strategy-research':'strategy-observe'}">${observe?'去研究院亲自试':'回观察室学思路'}${icon('arrow-up-right')}</button>`);
  $('#strategy-observe').hidden=!observe;$('#strategy-research').hidden=observe;
- const selection=customSelection(),selected=selection?.race===race.id?selection:null;
- const lessonKey=race.id+':'+JSON.stringify(selected);
- if(observe&&observeKey!==lessonKey){
-  disposeObserve();observeKey=lessonKey;
-  disposeObserve=mountObservatory($('#strategy-observe'),{race,races,selection:selected,moment:race.highlight||moments.find(m=>m.id==='vsc'),changeRace:id=>{selectRace(id,false);navigate('strategy-observe',false);},research:async input=>{try{await prepareCustomAnalysis(input,races);state.labRevision++;navigate('strategy-research');}catch{toast('这个起点暂时不可用，请在研究院重新选择。');}}});
- }
- const key=state.race+':'+state.labRevision;
- if(!observe&&labKey!==key){
+ // One shared case form keeps the selection and simulator settings when switching rooms.
+ $(observe?'#observe-analysis':'#research-analysis').append($('#strategy-custom'));
+ const mode=observe?'observe':'research',key=state.race+':'+state.labRevision;
+ if(labKey!==key){
   labKey=key;
-  customReady=mountCustomAnalysis({race,races,changeRace:id=>{selectRace(id,false);navigate('strategy-research',false);}});
+  customReady=mountCustomAnalysis({race,races,mode,onAnalysed:renderObserveGuide,changeRace:id=>{selectRace(id,false);navigate(state.view,false);}});
   renderStrategyCase();
- }
+ }else setCustomAnalysisMode(mode);
+ if(observe)renderObserveGuide();
 }
 function navigate(view,scroll=true){
  if(view==='replay'||view==='circuit')view='overview';
